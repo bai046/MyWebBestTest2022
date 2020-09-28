@@ -4,12 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        table{
+            border-collapse:collapse;
+            background-color: aqua;
+        }
+    </style>
 </head>
 <body>
-    <iframe src="https://www.baidu.com/?tn=18029102_3_dg" frameborder="0"></iframe><!--新开一个窗口-->
+    <iframe src="https://www.baidu.com/?tn=18029102_3_dg" frameborder=0 width=100%></iframe><!--新开一个窗口-->
     <a target="_blank" href="https://github.com/XiaoBai918">blank_mygithub</a><!--空  地址为绝对地址-->
     <a target="_self" href="https://github.com/XiaoBai918">self_mygithub</a><!--自己-->
     <a target="_parent" href="https://github.com/XiaoBai918">parent_mygithub</a><!--父-->
     <a target="_top" href="https://github.com/XiaoBai918">top_mygithub</a><!--顶级-->
+    <hr>
+    <!--a,form标签都是跳转页面，a 发起http get（获取）请求，form 发起http post（提交）请求-->
+    <!-- <iframe src="#" frameborder="9" name="bbb"></iframe> -->
+    <form action="users" method="POST" target="_blank\bbb"><!--html唯一上传post方法-->
+        *用户名：<input type="text" name="username" placeholder="请输入用户名..." required>
+        <!--post下name会被带到发送请求第四部分-->
+        <label>密码：<input type="password" name="password"></label>
+        <select name="group" multiple>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select> 
+    
+        <textarea name="tianxiewenben" cols="30" rows="10"></textarea>
+        <!-- 可加CSS控制大小style="resize:none; width:200px;height=200px" -->
+        <input type="submit" value="提交">
+    </form>
+
+   
+   <hr>
+
+   <input type="radio" name="sex" value="1" />男
+   <input type="radio" name="sex" value="0"/>女
+
+   <input type="checkbox" id="*" ><label for="*">看电影</label>
+   <label><input type="checkbox" name="love">看电影</label>
+   <!--input id与label for成对出现,但平时用包裹法节约一个变量-->
+   <input type="checkbox" name="love" value="movie" >看电影
+   <input type="checkbox" name="love" value="game" />玩游戏
+
+    普通按钮：<input type="button" name="btn" value="确定"/><!--无提交按钮时且仅有一个button升级为提交按钮-->
+    提交按钮：<input type="submit" name="submit" value="提交"/>
+    重置按钮：<input type="reset" name="reset" value="重置"/>
+
+    图片按钮：<input type="image" name="img_btn" src="URL" />
+    <a href="https://github.com/XiaoBai918">mygithub</a>
+
+    <input type="hidden" name="uid" value="18"/>
+
+    <input type="file" name="photo"/>
+
+    手机号码：<input type="number" name="phone"/>
+
+    <input type="color" name="color"/>
+
+    <input type="data" name="date"/>
+    <input type="time" name="time"/>
+    <input type="datatime-local" name="datetime-local"/>
+    <input type="month" name="month"/>
+    <input type="week" name="week"/>
+    <input type="email" name="name"/>
+    <input type="range" min="0" max="10" value="0"/>
+    <input type="search" name="search"/>
+    <input type="submit" name="submit" value="搜索"/>
+    <input type="url" name="url"/>
+    <input type="search" name="keywords" autocompulete="on"/>
+    <input type="search" name="keywords" autocomplete="on"/>
+    <input list="bllk" placeholder="请输入..."/>
+
+
+    <table border=1>  <!--在此不加border=1可以隐藏框 与上方style效果不同-->
+        <colgroup><!--每列宽度-->
+            <col width=100>
+            <col  width=200>
+            <col width=100>
+            <col width=70> 
+        </colgroup>
+        <thead><!--头-->
+            <tr>
+                <th>1</th><th>2</th><th>3</th><th>4</th><!--注意：tr行th头td列-->
+            </tr>
+        </thead>
+        <tbody><!--身体-->
+            <tr>
+                <th>2</th><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <th>3</th><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <th>4</th><td></td><td></td><td></td>
+            </tr>
+        </tbody>
+        <tfoot><!--低，写位可随意-->
+            <tr>
+                <th>5</th><td></td><td></td><td></td>
+            </tr>
+        </tfoot>
+    </table>
+
+
+
 </body>
 </html>
