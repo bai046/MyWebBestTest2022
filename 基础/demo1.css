@@ -1,0 +1,13 @@
+#xinwen{
+    width:420px;
+    height:30px;
+    font:30px,bold,#ff0000;
+    border-bottom:solid 3px #ff0000;
+          }
+
+
+/* 引用css的四种方法
+内联 style 属性
+style 标签
+外部文件 css link（最常用）
+@inport url (); */
