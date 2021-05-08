@@ -22,14 +22,37 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //设置跨域访问
-app.all('*', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-  res.header("X-Powered-By",' 3.2.1')
-  res.header("Content-Type", "application/json;charset=utf-8");
-  next();
+// app.all('*', function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//   res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+//   res.header("X-Powered-By",' 3.2.1')
+//   res.header("Content-Type", "application/json;charset=utf-8");
+//   next();
+// });
+//设置跨域访问
+app.use(function (req, res, next) {
+  if (req.method === "OPTIONS") {
+    let headers = {};
+    headers["Access-Control-Allow-Origin"] = "*";
+
+    headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
+
+    headers["Access-Control-Allow-Credentials"] = false;
+
+    headers["Access-Control-Max-Age"] = '86400'; // 24 hours
+
+    headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept";
+
+    res.writeHead(200, headers);
+
+    res.end();
+  } else {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    next();
+  }
 });
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
