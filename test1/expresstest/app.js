@@ -1,3 +1,4 @@
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -8,6 +9,9 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
+// post响应解析安装依赖：npm i body-parser --save
+var bodyParser = require('body-parser');
+//对body-parser进行配置
 
 var app = express();
 
@@ -20,6 +24,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use( bodyParser.urlencoded({extended: true}) )
+//设置完毕之后，会在req对象上面新增一个req.body的一个对象
 
 //设置跨域访问
 // app.all('*', function(req, res, next) {

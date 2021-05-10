@@ -22,7 +22,8 @@ var connection = mysql.createConnection({
 })
 connection.connect()
 router.get('/',function(req,res){
-    res.sendfile(path.join(__dirname,"../public/login.html"))
+    res.sendfile("http://localhost:8080/#/login")
+    // res.sendfile(path.join(__dirname,"../public/login.html"))
     //_dirname:当前文件的路径，path.join():合并路径
 })
 /**
@@ -40,6 +41,18 @@ router.get('/login',function(req,res){
         }else{res.send("<h2>登录成功，欢迎<h2>")}
     })
 })
+app.post('/urlencoded', function(req, res){
+    // 一定body
+    // console.log(req.body);
+    let newUser=req.body;
+    let username=newUser.params.newusername;
+    let password=newUser.params.newpassword;
+    console(username);
+    console(password);
+  
+    res.send("注册post successfully!");
+  });
+  
 /***
  * 注册功能
  */
@@ -51,7 +64,7 @@ router.get('/login',function(req,res){
 //     connection.query(query1,user,function(err,result){
 //     if(err) throw err;
 //     console.log("***")
-//     res.sendfile(path.join(__dirname,"../public/login.html"))
+//     res.sendfile("http://localhost:8080//login.vue")
 //     })
 // })
 module.exports = router;

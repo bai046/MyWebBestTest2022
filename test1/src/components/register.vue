@@ -48,21 +48,19 @@ export default {
   methods: {
     // cors模块解决跨域问题
     registerSystem() {
-      Axios.get("http://localhost:3000/register", {
-        params: this.newUser,
-      }).then(function (response) {
-        alert(response.data);
-
-        // console.log(response.data);
-        // console.log(response.status);
-        // console.log(response.statusText);
-        // console.log(response.headers);
-        console.log(response.config);
-      });
+      // Axios.get("http://localhost:3000/register", {
+      // params是添加到url的请求字符串中的，用于get请求
+      //   params: this.newUser,
+      // }).then(function (response) {
+      //   alert(response.data);
+      //   console.log(response.config);
+      // })
+      Axios.post("http://localhost:3000/register",{params: this.newUser}).then(function(response){
+        alter(response.data);
+      })
     },
   },
 };
-// params是添加到url的请求字符串中的，用于get请求
 </script>
 
 <style>
