@@ -52,19 +52,19 @@ app.post('/urlencoded', function(req, res){
   
     res.send("注册post successfully!");
   });
-  
+
 /***
  * 注册功能
  */
-// router.get('/register',function(req,res){
-//     var name = req.query.name
-//     var pwd = req.query.pwd
-//     var user = [name,pwd];
-//     var query1 = 'insert into login(name,pwd) values(?,?)';
-//     connection.query(query1,user,function(err,result){
-//     if(err) throw err;
-//     console.log("***")
-//     res.sendfile("http://localhost:8080//login.vue")
-//     })
-// })
+router.get('/register',function(req,res){
+    var name = req.query.name
+    var pwd = req.query.pwd
+    var user = [name,pwd];
+    var query1 = 'insert into login(name,pwd) values(?,?)';
+    connection.query(query1,user,function(err,result){
+    if(err) throw err;
+    console.log("***")
+    res.sendfile("http://localhost:8080//login.vue")
+    })
+})
 module.exports = router;
