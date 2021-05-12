@@ -1,5 +1,21 @@
 var express = require('express');
 var router = express.Router();
+var mysql=require('../model/db.js');
+
+router.post('/', function(req, res, next) {
+  let inform = req.body.params;
+  let username = inform.newusername;
+  let password = inform.newpassword;
+  console.log(inform);
+  let newUserSQL = 'INSERT INTO users (user_id,user_name,user_password) VALUES(1002,' +'"'+ username+'"' + ',' +'"'+ password +'"' + ')'
+  console.log(newUserSQL);
+  let conn = db.connection();
+  db.insert(conn,newUserSQL,'',function(insertId){
+    console.log(insertId)
+  });
+  db.close();
+  res.send("恭喜");
+});
 
 // /* GET users listing. */
 // router.get('/', function(req, res, next) {
@@ -17,16 +33,5 @@ var router = express.Router();
 //   res.send('registerpost was successful!');
 // });
 
-app.post('/urlencoded', function(req, res){
-  // 一定body
-  // console.log(req.body);
-  let newUser=req.body;
-  let username=newUser.params.newusername;
-  let password=newUser.params.newpassword;
-  console(username);
-  console(password);
-
-  res.send("注册post successfully!");
-});
 
 module.exports = router;
