@@ -14,7 +14,8 @@ router.post('/', function(req, res, next) {
     console.log(insertId)
   });
   db.close();
-  res.send("恭喜");
+  res.send("恭123434的");
+
 });
 
 // /* GET users listing. */
