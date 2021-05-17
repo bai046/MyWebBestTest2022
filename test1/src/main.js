@@ -16,8 +16,6 @@ Vue.config.productionTip = false
 // import VueAxios from 'vue-axios'
 // Vue.use(VueAxios, axios)
 
-
-
 // vue-router
 import VueRouter from "vue-router";
 // 引入组件
@@ -28,7 +26,6 @@ import Book from './components/book.vue'
 import CNNode from "./components/CNNode.vue";
 import Lndex from "./components/lndex.vue";
 import Register from "./components/register.vue";
-
 
 // 要告诉 vue 使用 vueRouter
 // 如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)

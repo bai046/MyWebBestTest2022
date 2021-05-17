@@ -9,6 +9,7 @@
         <!-- <Body /> -->
         <div id="main">
           <router-view></router-view>
+          <!-- <ECharts /> -->
         </div>
         
       </el-main>
