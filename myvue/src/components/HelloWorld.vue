@@ -1,59 +1,59 @@
 <template>
-<div>
-  <div class="w3ls-header"><!--header-one--> 
-			<div class="w3ls-header-left">
-				<p><router-link to="/index" target="_blank" style="color:white" class="dropdown-toggle">
-        发猿地</router-link></p>
-			</div>
-      <div class="w3ls-header-right">
-				<ul>
-          <li class="dropdown head-dpdn">
-                  <router-link to="/modifyInfo" target="_blank" style="color:white" class="dropdown-toggle"><i class="fa fa-user" aria-hidden="true"></i>
-                  个人中心</router-link>
-                </li> 
-                <li class="dropdown head-dpdn">             
-                  <router-link to="/help" target="_blank" style="color:white" class="dropdown-toggle"><i class="fa fa-percent" aria-hidden="true"></i>
-                  项目管理</router-link>
-                </li> 
-                <li class="dropdown head-dpdn">
-                  <a href="contact.html" class="dropdown-toggle"><i class="fa fa-map-marker" aria-hidden="true"></i>申请广告位</a>
-                </li> 
-                <li class="dropdown head-dpdn">
-                  <router-link to="/help" target="_blank" style="color:white" class="dropdown-toggle"><i class="fa fa-map-marker" aria-hidden="true"></i>
-                  联系我们</router-link>
-                </li>
-         </ul>      
-			</div>
-			<div class="clearfix"> </div> 
-      </div>	
-</div>
+  <div class="hello">
+    <h1>{{ msg }}</h1>
+    <p>
+      For a guide and recipes on how to configure / customize this project,<br>
+      check out the
+      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
+    </p>
+    <h3>Installed CLI Plugins</h3>
+    <ul>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-vuex" target="_blank" rel="noopener">vuex</a></li>
+    </ul>
+    <h3>Essential Links</h3>
+    <ul>
+      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
+      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
+      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
+      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
+      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
+    </ul>
+    <h3>Ecosystem</h3>
+    <ul>
+      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
+      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
+      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
+      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
+    </ul>
+  </div>
 </template>
 
-
 <script>
-import $ from 'jquery';
-import img_1 from"@/images/1.jpg";
-
 export default {
-  data() {
-    return {
-      radio4:'上海',
-      img_1
-    };
-  },
-  computed: {
-    message() {
-      return "页面找不到了......";
-    }
+  name: 'HelloWorld',
+  props: {
+    msg: String
   }
-};
+}
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
-
-@import '~@/styles/bootstrap.css';
-@import '.~@/styles/style.css';
-@import '.~@/styles/style2.css';
-@import '~@/styles/font-awesome.css';
-
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
 </style>
