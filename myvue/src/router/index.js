@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import One from '../views/One.vue'
 import Two from '../views/Two.vue'
+import MyWallet from '../views/myWallet.vue'
 // export default new router({
 //   routes: [
 //     {
@@ -34,6 +35,11 @@ const routes = [
     path: "/Two",
     name: 'Two',
     component: Two
+  },
+  {
+    path: "/myWallet",
+    name: 'MyWallet',
+    component: MyWallet
   },
   {
     path: '/about',
