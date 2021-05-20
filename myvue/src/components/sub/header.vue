@@ -12,17 +12,17 @@
           >项目管理</el-link
         ></router-link
       >
-      <router-link to="/"
+      <router-link to="/StudioInfo"
         ><el-link :underline="false" icon="el-icon-edit"
           >查看项目列表</el-link
         ></router-link
       >
-      <router-link to="/"
+      <router-link to="/help"
         ><el-link :underline="false" icon="el-icon-chat-dot-round"
           >联系我们</el-link
         ></router-link
       >
-      <router-link to="/"
+      <router-link to="/ManageProject"
         ><el-link :underline="false" icon="el-icon-s-home"
           >退出登入</el-link
         ></router-link

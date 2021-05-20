@@ -3,7 +3,14 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import One from '../views/One.vue'
 import Two from '../views/Two.vue'
+import Help from '../views/help.vue'
 import MyWallet from '../views/myWallet.vue'
+import StudioInfo from '../views/StudioInfo.vue'
+import ManageProject from '../views/ManageProject.vue'
+import StudioManageProgress from '../views/projectManagement/studioManageProgress.vue'
+import StudioManageFinished from '../views/projectManagement/studioManageFinished.vue'
+
+
 // export default new router({
 //   routes: [
 //     {
@@ -36,10 +43,39 @@ const routes = [
     name: 'Two',
     component: Two
   },
+  ,
+  {
+    path: "/help",
+    name: 'Help',
+    component: Help
+  },
   {
     path: "/myWallet",
     name: 'MyWallet',
     component: MyWallet
+  },
+  {
+    path: "/ManageProject",
+    name: 'ManageProject',
+    component: ManageProject
+  },
+  ,
+  {
+    path: "/studioManageProgress",
+    name: 'StudioManageProgress',
+    component: StudioManageProgress
+  },
+  ,
+  {
+    path: "/studioManageFinished",
+    name: 'StudioManageFinished',
+    component: StudioManageFinished
+  },
+  ,
+  {
+    path: "/StudioInfo",
+    name: 'StudioInfo',
+    component: StudioInfo
   },
   {
     path: '/about',

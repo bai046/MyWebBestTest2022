@@ -2,38 +2,15 @@
   <div id="one">
     <div class="header">
       <div class="header-left">
-        <li class="dropdown head-dpdn">
+        <li>
           <a style="color: black" class="dropdown-toggle"
-            ><i class="fa fa-user" aria-hidden="true"></i> 个人中心</a
+            ><i class="el-icon-user-solid" aria-hidden="true"></i> 个人中心</a
           >
         </li>
       </div>
     </div>
     <div class="uc-layer-top self">
-      
-      <el-dialog :visible.sync="dialogVisible">
-        <img width="100%" :src="dialogImageUrl" alt="" />
-      </el-dialog>
-      <div class="uc-avatar face-icon">
-        <el-upload
-  class="avatar-uploader"
-  action="https://jsonplaceholder.typicode.com/posts/"
-  :show-file-list="false"
-  :on-success="handleAvatarSuccess"
-  :before-upload="beforeAvatarUpload">
-  <img v-if="imageUrl" :src="imageUrl" class="avatar">
-          <img
-          id="user-avatar"
-          src="//img.ketangpai.com/ketangpai.aliapp.com/1/webroot/Uploads/Download/2017-02-28/1488264570.jpg%40%2162-62?OSSAccessKeyId=LTAItfPkNIKJFibY&amp;Expires=1867647789&amp;Signature=6XDeX%2BSsliObX1S38FAbsZunQ60%3D"
-          alt="张智涵"
-        />
-              <!-- <img v-if="avatarUrl" :src="avatarUrl" class="avatar" />
-
-      <i v-else class="el-icon-plus avatar-uploader-icon"></i> -->
-    </el-upload>
-</el-upload>
-      </div>
-      <h1 class="uc-name">{{ this.$root.username }}</h1>
+      <About />
       <div class="s-header">
         <div class="h-nav">
           <a href="#info">个人资料</a>
@@ -41,6 +18,7 @@
         </div>
       </div>
     </div>
+
     <div class="setting-page cWidth" :model="user">
       <div class="item-change">
         <div class="setting-item" id="info" :model="user">
@@ -95,6 +73,8 @@
                 <!-- </template> -->
               </li>
               <li>
+                <!-- <p v-if="user.roleId == 2">工作室： </p>
+                            <p v-if="user.roleId == 3">企业： </p> -->
                 <p>工作室：</p>
                 <div class="edit-box">
                   <span>{{ user.unitName }}</span>
@@ -231,11 +211,11 @@
 </template>
 
 <script>
+import About from "./About.vue";
 export default {
+  components: { About },
   data() {
     return {
-      imageUrl: '',
-      avatarUrl: "http://127.0.0.1:8080/avatar.jpg", //默认头像
       roles: [], //角色列表
       dialogStatus: "update",
       dialogFormVisible1: false,
@@ -267,36 +247,6 @@ export default {
     this.getUserInfo();
   },
   methods: {
-    handleAvatarSuccess(res, file) {
-        this.imageUrl = URL.createObjectURL(file.raw);
-      },
-      beforeAvatarUpload(file) {
-        const isJPG = file.type === 'image/jpeg';
-        const isLt2M = file.size / 1024 / 1024 < 2;
-
-        if (!isJPG) {
-          this.$message.error('上传头像图片只能是 JPG 格式!');
-        }
-        if (!isLt2M) {
-          this.$message.error('上传头像图片大小不能超过 2MB!');
-        }
-        return isJPG && isLt2M;
-      },
-    handleAvatarSuccess(res, file) {
-        this.imageUrl = URL.createObjectURL(file.raw);
-      },
-      beforeAvatarUpload(file) {
-        const isJPG = file.type === 'image/jpeg';
-        const isLt2M = file.size / 1024 / 1024 < 2;
-
-        if (!isJPG) {
-          this.$message.error('上传头像图片只能是 JPG 格式!');
-        }
-        if (!isLt2M) {
-          this.$message.error('上传头像图片大小不能超过 2MB!');
-        }
-        return isJPG && isLt2M;
-      },
     showUpdateBasicInfo() {
       this.dialogFormVisible1 = true;
     },
@@ -364,30 +314,7 @@ export default {
 </script>
 
 <style>
-.avatar-uploader .el-upload {
-    border: 1px dashed #d9d9d9;
-    border-radius: 6px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  .avatar-uploader .el-upload:hover {
-    border-color: #409EFF;
-  }
-  .avatar-uploader-icon {
-    font-size: 28px;
-    color: #8c939d;
-    width: 178px;
-    height: 178px;
-    line-height: 178px;
-    text-align: center;
-  }
-  .avatar {
-    width: 178px;
-    height: 178px;
-    display: block;
-  }
-#one{
+#one {
   height: 100%;
   padding: 0;
 }
@@ -395,6 +322,7 @@ export default {
   background: transparent;
   /* padding: 2em 2em; */
   position: fixed;
+  margin-top: -90px;
 }
 .header-left {
   float: left;
@@ -473,9 +401,10 @@ export default {
 }
 .uc-layer-top.self {
   height: 280px;
+  padding: 0 0;
 }
 .uc-layer-top {
-  height: 260px;
+  height: 280px;
   background-color: #fff;
   border-bottom: 1px solid #c8c8c8;
   text-align: center;
@@ -1405,15 +1334,7 @@ textarea {
   line-height: 32px;
   color: #969696;
 }
-.uc-name {
-  border-top: 1px solid #dcdcdc;
-  padding: 30px 20px 0 20px;
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: -30px;
-  line-height: 34px;
-  height: 34px;
-}
+
 .s-header .h-nav a.active {
   color: #4d90fe;
 }
