@@ -96,7 +96,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import SNavBar from "@/components/NavBar/studio";
+import SNavBar from "/components/NavBar/studio";
 // import $ from 'jquery'
 export default {
   data() {

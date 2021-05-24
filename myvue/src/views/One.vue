@@ -1,5 +1,6 @@
 <template>
   <div id="one">
+<SNavBar></SNavBar>
     <div class="header">
       <div class="header-left">
         <li>
@@ -212,8 +213,11 @@
 
 <script>
 import About from "./About.vue";
+import SNavBar from '../components/NavBar/studio';
+// import CNavBar from '@/components/NavBar/company';
+
 export default {
-  components: { About },
+  components: { About ,SNavBar},
   data() {
     return {
       roles: [], //角色列表
@@ -320,9 +324,8 @@ export default {
 }
 .header {
   background: transparent;
-  /* padding: 2em 2em; */
+  padding: 2em 2em;
   position: fixed;
-  margin-top: -90px;
 }
 .header-left {
   float: left;

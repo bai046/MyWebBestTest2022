@@ -1,20 +1,21 @@
 <template>
   <div id="app">
-    <el-container>
-      <el-header>    
+    <router-view></router-view> 
+    <!-- <el-container>
+      <el-header>       
         <Header />
-      <!-- <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> -->    
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>    
       </el-header>
       <el-main>
           <router-view></router-view>     
       </el-main>
-    </el-container>
+    </el-container> -->
   </div>
 </template>
 
 <script>
-import Header from "./components/sub/header";
+import Header from "./components/NavBar/studio";
 
 export default {
   name: "App",
@@ -29,13 +30,6 @@ export default {
   margin: 0;
   padding: 0;
 }
-#app>section> .el-header{
-  width: 100%;
-  padding: 0;
-  height: 50px;
-}
-/* #nav {
-} */
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

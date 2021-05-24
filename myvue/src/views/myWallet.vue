@@ -1,5 +1,6 @@
 <template>
   <div>
+    <SNavBar></SNavBar>
     <div class="uc-layer-top self">
       <About />
       <div class="s-header">
@@ -268,8 +269,11 @@
 
 <script>
 import About from "./About.vue";
+import SNavBar from "../components/NavBar/studio.vue";
+// import CNavBar from '@/components/NavBar/company';
+
 export default {
-  components: { About },
+  components: { About, SNavBar },
   data() {
     return {
       dialogStatus: "update",

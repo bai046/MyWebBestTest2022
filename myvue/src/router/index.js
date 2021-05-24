@@ -4,11 +4,13 @@ import Home from '../views/Home.vue'
 import One from '../views/One.vue'
 import Two from '../views/Two.vue'
 import Help from '../views/help.vue'
+import View from '../components/NavBar/view.vue'
 import MyWallet from '../views/myWallet.vue'
 import StudioInfo from '../views/StudioInfo.vue'
 import ManageProject from '../views/ManageProject.vue'
 import StudioManageProgress from '../views/projectManagement/studioManageProgress.vue'
 import StudioManageFinished from '../views/projectManagement/studioManageFinished.vue'
+
 
 
 // export default new router({
@@ -32,6 +34,12 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  }
+  ,
+  {
+    path: "/view",
+    name: 'View',
+    component: View
   },
   {
     path: "/One",

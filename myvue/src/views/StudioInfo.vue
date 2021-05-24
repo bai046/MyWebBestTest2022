@@ -1,5 +1,6 @@
 <template>
   <div class="studioInfo">
+      <SNavBar></SNavBar>
     <!-- <nav-bar></nav-bar> -->
     <div class="wrapper">
       <div class="p-type">
@@ -114,9 +115,13 @@
 </template>
 
 <script>
-import tianding from "@/images/tianding.png";
+import tianding from "../images/tianding.png";
 // import NavBar from '../../components/NavBar/NavBar.vue';
+import SNavBar from '../components/NavBar/studio';
+// import CNavBar from '@/components/NavBar/company';
+
 export default {
+components:{SNavBar},
   data() {
     return {
       tianding,

@@ -1,5 +1,6 @@
 <template>
 <div>
+  <SNavBar></SNavBar>
   <!-- <SNavBar v-if="this.$root.loginedRoleId =='2'"></SNavBar>
   <CNavBar v-if="this.$root.loginedRoleId =='3'"></CNavBar> -->
 	<div class="header">
@@ -84,14 +85,15 @@
 
 
 <script>
-import img_404 from "@/assets/404_images/404.png";
-import img_404_cloud from "@/assets/404_images/404_cloud.png";
+// import img_404 from "@/assets/404_images/404.png";
+// import img_404_cloud from "@/assets/404_images/404_cloud.png";
 // import $ from 'jquery';
-import img_1 from"@/images/1.jpg";
-// import SNavBar from '@/components/NavBar/studio';
+// import img_1 from"@/images/1.jpg";
+import SNavBar from '../components/NavBar/studio';
 // import CNavBar from '@/components/NavBar/company';
 
 export default {
+components:{SNavBar},
   data() {
     return {
       img_404,
@@ -105,7 +107,8 @@ export default {
       return "页面找不到了......";
     }
 	},
-	// components:{SNavBar,CNavBar},
+	components:{SNavBar},
+	// ,CNavBar
 };
 </script>
 

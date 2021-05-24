@@ -1,16 +1,17 @@
 <template>
   <div>
+      <SNavBar></SNavBar>
     <div class="header">
       <div class="header-left">
         <li class="dropdown head-dpdn">
-            <a style="color:black" class="dropdown-toggle"><i class="fa fa-user" aria-hidden="true"></i>
+            <a style="color:black" class="dropdown-toggle"><i class="el-icon-user-solid" aria-hidden="true"></i>
               项目管理</a>
             <br>
         </li>
             <a style="color:black;margin-left:4em">↓</a>
             <br>
         <li class="dropdown head-dpdn">
-            <a style="color:black" class="dropdown-toggle"><i class="fa fa-user" aria-hidden="true"></i>
+            <a style="color:black" class="dropdown-toggle"><i class="el-icon-user-solid" aria-hidden="true"></i>
               投标中</a>
         </li> 
       </div>
@@ -91,8 +92,11 @@ import About from './About.vue';
 // import { mapGetters } from "vuex";
 // import $ from 'jquery'
 // import About from "./About.vue";
+import SNavBar from '../components/NavBar/studio';
+// import CNavBar from '@/components/NavBar/company';
+
 export default {
-  components: {About  },
+  components: {About,SNavBar  },
   data() {
     return {
       modify: false,
