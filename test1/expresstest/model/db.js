@@ -9,6 +9,19 @@ db.insert = function(connection, sql, paras, callback){
     });
 }
 
+db.query1=function(connection,sql,paras,callback){
+    let result=connection.query(sql, paras, 
+        function (error, results, fields) {
+        if(error){
+            console.log(error)
+        }else{
+            // console.log(results)
+            callback(results)
+        }
+    })
+
+}
+
 //关闭数据库
 db.close = function(connection){
     //关闭连接

@@ -26,9 +26,9 @@
       ></el-input>
       <!-- <el-input placeholder="请输入密码" v-model="input" show-password></el-input> -->
       <div id="submit">
-        <router-link to="/work">
+        <!-- <router-link to="/work"> -->
           <el-button id="submitSystem" type="button" @click="loginSystem">登录</el-button>
-        </router-link>
+        <!-- </router-link> -->
       </div>
     </el-card>
   </div>
@@ -41,22 +41,22 @@ export default {
   data() {
     return {
       user: {
-        username: "",
-        password: "",
+        username: "张三",
+        password: "123456",
         // input:''
       }    
     };
   },
   methods:{
     loginSystem(){
-      Axios.get('http://localhost:3000/login').then(function(response){
+      Axios.post('http://localhost:3000/login',{params:this.user}).then(function(response){
         console.log("你已登入！");
-
-        console.log(response.data);
+        // alter(response.data.state+'\n'+response.data.messages);
+        // console.log(response.data);
         // console.log(response.status);
         // console.log(response.statusText);
         // console.log(response.headers);
-        console.log(response.config);
+        // console.log(response.config);
       })
     }
   }
