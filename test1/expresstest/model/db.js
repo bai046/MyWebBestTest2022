@@ -10,7 +10,7 @@ db.insert = function(connection, sql, paras, callback){
 }
 
 db.query1=function(connection,sql,paras,callback){
-    let result=connection.query(sql, paras, 
+    let results=connection.query(sql, paras, 
         function (error, results, fields) {
         if(error){
             console.log(error)
@@ -40,7 +40,7 @@ db.connection = function(){
     let connection = mysql.createConnection({
         host:'localhost',
         user:'root',
-        password:'gay20010406hk',
+        password:'gsy20010406hk',
         database:'expressdb',
         port:3306
     });

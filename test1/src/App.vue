@@ -8,6 +8,7 @@
       <el-main>
         <!-- <Body /> -->
         <div id="main">
+          <!-- <Lndex/> -->
           <router-view></router-view>
           <!-- <ECharts /> -->
         </div>
@@ -22,7 +23,8 @@
 // import HelloWorld from './components/HelloWorld.vue'
 //2,导入vue子组件
 import Header from "./components/header";
-import Login from "./components/login";
+import Lndex from "./components/lndex.vue";
+// import Login from "./components/login";
 import Footer from "./components/footer";
 // import Body  from "./components/body";
 
@@ -33,7 +35,8 @@ export default {
     // HelloWorld
     //3,注册vue子组件，components
     Header,
-    Login,
+    Lndex,
+    // Login,
     // Body,
     Footer,
   },
@@ -59,7 +62,7 @@ export default {
 }
 
 .el-footer {
-  /* position: fixed; */
+  position: fixed;
   display: flex;
   justify-content: center;
   padding: 0;

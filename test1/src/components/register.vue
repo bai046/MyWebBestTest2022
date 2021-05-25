@@ -40,7 +40,7 @@ export default {
   data() {
     return {
       newUser: {
-        newusername: "张三",
+        newusername: "李四",
         newpassword: "123456",
       },
     };
@@ -56,7 +56,7 @@ export default {
       //   console.log(response.config);
       // })
       Axios.post("http://localhost:3000/register",{params: this.newUser}).then(function(response){
-        alter(response.data.state+'\n'+response.data.messages);
+        // alter(response.data.state+'\n'+response.data.messages);
       })
     },
   },

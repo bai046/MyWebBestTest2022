@@ -18,7 +18,7 @@ router.post('/', function(req, res, next) {
     // SQL用编程格式
   let newUserSQL = 'INSERT INTO users (user_id,user_name,user_password) VALUES(1002,' +'"'+ username+'"' + ',' +'"'+ password +'"' + ')'
   console.log(newUserSQL);
-  let conn = db.connection();
+  // const conn = db.connection();
 
 
   // db.insert(conn,newUserSQL,'',function(res){

@@ -37,6 +37,10 @@ Vue.use(VueRouter);
 // 我们晚点再讨论嵌套路由。
 const routes = [
     {
+        path: "/",
+        component: Lndex
+    },
+    {
         path: "/login",
         component: Login
     },

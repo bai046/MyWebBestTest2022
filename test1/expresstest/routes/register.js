@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mysql=require('../model/db.js');
+var db=require('../model/db.js');
 
 // tongguo
 Date.prototype.format = function(format)
@@ -34,21 +34,20 @@ router.post('/', function(req, res, next) {
 
   console.log(inform);
   // SQL用编程格式
-  // let newUserSQL = 'INSERT INTO users (user_id,user_name,user_password) VALUES(1002,' +'"'+ username+'"' + ',' +'"'+ password +'"' + ')'
-  // console.log(newUserSQL);
-  // let conn = db.connection();
+  let newUserSQL = 'INSERT INTO users (user_id,user_name,user_password) VALUES(1002,' +'"'+ username+'"' + ',' +'"'+ password +'"' + ')'
+  console.log(newUserSQL);
+  let conn = db.connection();
 
-
-  // db.insert(conn,newUserSQL,'',function(res){
-  //   let result=res;
-  //   console.log(res)
-  // });
-//   db.insert(conn,newUserSQL,'',function(insertId){
-//     console.log(insertId)
-//   });
-//   db.close(conn);
-//   res.send("成功");
-// });
+  db.insert(conn,newUserSQL,'',function(res){
+    let results=res;
+    console.log(results)
+  });
+  db.insert(conn,newUserSQL,'',function(insertId){
+    console.log(insertId)
+  });
+  db.close(conn);
+  res.send("成功");
+});
 
 // let isExistUserSQL="select user_name from users";
 // let conn=db.connection()
@@ -77,7 +76,7 @@ router.post('/', function(req, res, next) {
 
 // router.post('/', function(req, res, next) {
 //   res.send('registerpost was successful!');
-});
+// });
 
 
 module.exports = router;
