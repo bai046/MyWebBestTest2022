@@ -1,293 +1,554 @@
 <template>
-  <div class="studioInfo">
-      <SNavBar></SNavBar>
-    <!-- <nav-bar></nav-bar> -->
-    <div class="wrapper">
-      <div class="p-type">
-        <div class="project-type">{{ projectName }}</div>
-        <div class="pr-type">
-          <div class="pro-type">
-            <span
-              :class="indexType == inxType ? 'project' : ''"
-              @click="selectType(item, indexType)"
-              v-for="(item, indexType) in StudioInfoItemtype"
-              :key="indexType"
-              >{{ item }}</span
-            >
-          </div>
-        </div>
+  <div id="info">
+    <Nav />
+        <div class="padding-leftandright gray-bgcolor">
+      <div class="filter-container">
+        <el-form>
+          <el-form-item>
+            <el-row>
+              <div class="project-filter-content">
+                <div class="expand-option filter-item">
+                  <div class="expand-option-content">
+                    <div class="project-label">项目类型：</div>
+                    <div class="option-content">
+                      <div class="option-list">
+                        <div>
+                          <li
+                            class="liMenu"
+                            :class="idxType==indexType?'type':''"
+                            @click="selectType(itemType,idxType)"
+                            v-for="(itemType,idxType) in type"
+                            :key="idxType"
+                          >{{itemType}}</li>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="expand-option filter-item">
+                  <div class="expand-option-content">
+                    <div class="project-label">项目角色：</div>
+                    <div class="option-content">
+                      <div class="option-list">
+                        <div>
+                          <li
+                            class="liMenu"
+                            :class="idxRole==indexRole?'role':''"
+                            @click="selectRole(itemRole,idxRole)"
+                            v-for="(itemRole,idxRole) in role"
+                            :key="idxRole"
+                          >{{itemRole}}</li>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </el-row>
+          </el-form-item>
+        </el-form>
       </div>
-      <div class="p-type">
-        <div class="project-type">{{ serverAddressName }}</div>
-        <div class="pr-type">
-          <div class="pro-type">
-            <span
-              :class="indexAddress == inxAddress ? 'serAddress' : ''"
-              @click="serverAddressm(item, indexAddress)"
-              v-for="(item, indexAddress) in serverAddress"
-              :key="indexAddress"
-              >{{ item }}</span
-            >
+
+      <el-form>
+        <div class="white-bgcolor">
+          <div class="item-container-2Txk_">
+            <div class="item-content--DS7m">
+              <el-row
+                :data="demandList"
+                v-loading.body="listLoading"
+                element-loading-text="拼命加载中"
+                border
+                fit
+                highlight-current-row
+              >
+                <el-col :span="24" v-for="o in demandList" :key="o" >
+                  <el-card :body-style="{ padding: '5px' }">
+                    <div class="icon-content-3GTl0">
+                        <p v-if="o.projectType=='Web网站'">
+                          <img class="img-background" :src="web">
+                        </p>
+                        <p v-if="o.projectType=='APP开发'">
+                          <img class="img-background" :src="APP">
+                        </p>
+                        <p v-if="o.projectType=='微信公众号'">
+                          <img class="img-background" :src="weixin">
+                        </p>
+                        <p v-if="o.projectType=='HTML5应用'">
+                          <img class="img-background" :src="html5">
+                        </p>
+                        <p v-if="o.projectType=='小程序'">
+                          <img class="img-background" :src="small">
+                        </p>
+                        <p v-if="o.projectType=='其他'">
+                          <img class="img-background" :src="other">
+                        </p>
+                        <a @click="studioInfo(o.id)">
+                        </a>
+                    </div>
+                    <div class="body-content-2y6ks">
+                      <div class="info-body-34ARl">
+                        <div class="title-2q5sH">
+                          <a @click="studioInfo(o.id)" class="name-UUeBS">
+                            <span class="no-3TiXA">NO.</span>
+                            <span class="no-3TiXA">{{o.id}}</span>
+                            <span class="name-UUeBS">
+                              <span class>{{o.projectName}}</span>
+                            </span>
+                            <span class="status-3kUbT recruiting">{{o.tenderStatus}}</span>
+                          </a>
+                          <span class="price-2qRFd">
+                            <span class="bargain-1QpRQ"></span>
+                            <span class="money-LMlJK">
+                              <span>&yen;{{o.projectBudget}}</span>
+                            </span>
+                          </span>
+                        </div>
+                        <div>
+                          <div class="label-2n6KW">
+                            <label>招募：</label>
+                            <span>{{o.recruitmentRole}}</span>
+                          </div>
+                          <div class="label-2n6KW">
+                            <label>类型：</label>
+                            <span>{{o.projectType}}</span>
+                          </div>
+                          <div class="label-2n6KW">
+                            <label>周期(天)：</label>
+                            <span>{{o.projectCycle}}</span>
+                          </div>
+                        </div>
+                        <div class="time-2b2Sj">
+                          <span>13 小时前发布</span>
+                          <span>0人报名</span>
+                        </div>
+                      </div>
+                    </div>
+                  </el-card>
+                </el-col>
+              </el-row>
+            </div>
+            <el-pagination
+              @size-change="handleSizeChange"
+              @current-change="handleCurrentChange"
+              :current-page="pageNum"
+              :page-size="pageRow"
+              :total="totalCount"
+              :page-sizes="[10, 20, 50, 100]"
+              layout="total, sizes, prev, pager, next, jumper"
+            ></el-pagination>
           </div>
         </div>
-      </div>
-      <div class="p-type">
-        <div class="project-type">{{ serverEmployeeName }}</div>
-        <div class="pr-type">
-          <div class="pro-type">
-            <span
-              :class="indexEmployee == inxEmployee ? 'serEmployee' : ''"
-              @click="serverEmployeem(item, indexEmployee)"
-              v-for="(item, indexEmployee) in serverEmployee"
-              :key="indexEmployee"
-              >{{ item }}</span
-            >
-          </div>
-        </div>
-      </div>
-      <div class="p-type">
-        <div class="project-type">{{ sortName }}</div>
-        <div class="pr-type">
-          <div class="pro-type">
-            <span
-              :class="indexSort == inxSort ? 'sortc' : ''"
-              @click="sortm(item, indexSort)"
-              v-for="(item, indexSort) in sort"
-              :key="indexSort"
-              >{{ item }}</span
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="imgWrapper">
-      <div class="tidiCenter">
-        <div class="tidiImg">
-          <img :src="tianding" alt="" class="tidi" />
-        </div>
-       <div class="imgRight">
-          <div class="contentRight">
-             <div class="pmName">
-          <span>No. </span>
-        </div>
-        <div class="workPlace">
-          <span>工作室名称：</span>
-          <span>单位地点：</span>
-          <span>已做项目数量：</span>
-        </div>
-        <div class="evaluate">
-          <span>评价</span>
-        </div>
-        <div class="requireEvaluate">
-          <p>需求指标评价:</p>
-          <el-rate
-            v-model="value1"
-            disabled
-            show-score
-            text-color="#ff9900"
-          >
-          </el-rate>
-           <p>需求指标评价:</p>
-          <el-rate
-            v-model="value1"
-            disabled
-            show-score
-            text-color="#ff9900"
-          >
-          </el-rate>
-           <p>需求指标评价:</p>
-          <el-rate
-            v-model="value1"
-            disabled
-            show-score
-            text-color="#ff9900"
-          >
-          </el-rate>
-          <div class="enrollTime">
-            <span>13小时前发布0人报名</span>
-          </div>
-        </div>
-          </div>
-       </div>
-      </div>
+      </el-form>
     </div>
   </div>
 </template>
 
 <script>
-import tianding from "../images/tianding.png";
-// import NavBar from '../../components/NavBar/NavBar.vue';
-import SNavBar from '../components/NavBar/studio';
-// import CNavBar from '@/components/NavBar/company';
-
+import img_404 from "@/assets/404_images/404.png";
+import img_404_cloud from "@/assets/404_images/404_cloud.png";
+import img_1 from "@/images/1.jpg";
+import img_2 from "@/images/2.jpg";
+import web from "@/images/web.png";
+import APP from "@/images/APP.png";
+import weixin from "@/images/weixin.png";
+import html5 from "@/images/html5.png";
+import small from "@/images/small.png";
+import other from "@/images/other.png";
+import Nav from "../components/NavBar/studio";
 export default {
-components:{SNavBar},
+  components: { Nav },
   data() {
     return {
-      tianding,
-      value1:4.0,
-      StudioInfoItemtype: [
+      img_404,
+      img_404_cloud,
+      img_1,
+      img_2,
+      web,
+      APP,
+      html5,
+      other,
+      small,
+      weixin,
+      pageNum:1,
+      pageRow:50,
+      listLoading: false, 
+      totalCount:0,
+      type: [
         "全部",
         "Web网站",
         "APP开发",
         "微信公众号",
         "HTML5应用",
         "小程序",
-        "其他",
+        "其他"
       ],
-      serverAddress: [
+      schedule: ["全部", "招标中", "已结束"],
+      demandList: [],
+      role: [
         "全部",
-        "北京",
-        "上海",
-        "广州",
-        "深圳",
-        "杭州",
-        "河北",
-        "山西",
-        "四川",
-        "重庆",
-        "江苏",
-        "辽宁",
-        "吉林",
+        "项目经理",
+        "产品经理",
+        "设计师",
+        "Android开发",
+        "iOS开发",
+        "前端开发",
+        "后端开发",
+        "全栈开发",
+        "应用开发",
+        "开发团队",
+        "测试工程师"
       ],
-      serverEmployee: [
-        "20以下",
-        "20-50",
-        "50-100",
-        "100-150",
-        "150-200",
-        "200+",
-      ],
-      sort: [
-        "综合评价优先",
-        "需求指标评价优先",
-        "能力指标评价优先",
-        "计划指标评价优先",
-      ],
-      projectName: "擅长的项目类型：",
-      serverAddressName: "服务提供地：",
-      serverEmployeeName: "已服务雇主数量：",
-      sortName: "排序：",
-      inxType: 0,
-      inxAddress: 0,
-      inxEmployee: 0,
-      inxSort: 0,
+      selectedItems: {
+        projectType: "全部",
+        tenderStatus: "全部",
+        recruitmentRole: "全部"
+      },
+      indexType: 0,
+      indexSchedule: 0,
+      indexRole: 0
     };
   },
-  methods: {
-    selectType(item, indexType) {
-      this.inxType = indexType;
-    },
-    serverAddressm(item, indexAddress) {
-      this.inxAddress = indexAddress;
-    },
-    serverEmployeem(item, indexEmployee) {
-      this.inxEmployee = indexEmployee;
-    },
-    sortm(item, indexSort) {
-      this.inxSort = indexSort;
-    },
+  created: function() {
+    this.getAllDemand();
   },
-  // components: {NavBar},
+  computed: {
+    message() {
+      return "页面找不到了......";
+    }
+  },
+  methods: {
+    selectType(itemType, idxType) {
+      this.indexType = idxType;
+      this.selectedItems.projectType = itemType;
+      this.api({
+        url: "/classify/filterDemand",
+        method: "post",
+        data: this.selectedItems
+      }).then(data => {
+        this.totalCount = data.totalCount
+        this.demandList = data.list;
+        for (var index = 0; index < this.demandList.length; index++) {
+          if (this.demandList[index].tenderStatus == 1) {
+            this.demandList[index].tenderStatus = "招募中";
+          } else {
+            this.demandList[index].tenderStatus = "已结束";
+          }
+        }
+      });
+    },
+    selectStatus(itemSchedule, idxSchedule) {
+      this.indexSchedule = idxSchedule;
+      if (itemSchedule == "招标中") {
+        this.selectedItems.tenderStatus = "1";
+      } else if (itemSchedule == "已结束") {
+        this.selectedItems.tenderStatus = "2";
+      } else {
+        this.selectedItems.tenderStatus = "全部";
+      }
+      this.api({
+        url: "/classify/filterDemand",
+        method: "post",
+        data: this.selectedItems
+      }).then(data => {
+        this.totalCount = data.totalCount
+        this.demandList = data.list;
+        for (var index = 0; index < this.demandList.length; index++) {
+          if (this.demandList[index].tenderStatus == 1) {
+            this.demandList[index].tenderStatus = "招募中";
+          } else if (this.demandList[index].tenderStatus == 2) {
+            this.demandList[index].tenderStatus = "已结束";
+          }
+        }
+      });
+    },
+    selectRole(itemRole, idxRole) {
+      this.indexRole = idxRole;
+      this.selectedItems.recruitmentRole = itemRole;
+      this.api({
+        url: "/classify/filterDemand",
+        method: "post",
+        data: this.selectedItems
+      }).then(data => {
+        this.totalCount = data.totalCount
+        this.demandList = data.list;
+        for (var index = 0; index < this.demandList.length; index++) {
+          if (this.demandList[index].tenderStatus == 1) {
+            this.demandList[index].tenderStatus = "招募中";
+          } else if (this.demandList[index].tenderStatus == 2) {
+            this.demandList[index].tenderStatus = "已结束";
+          }
+        }
+      });
+    },
+    getAllDemand() {
+      this.api({
+        url: "/classify/getAllDemand",
+        method: "post",
+        data: this.selectedItems
+      }).then(data => {
+        this.demandList = data.list;
+        this.totalCount = data.totalCount
+        for (var index = 0; index < this.demandList.length; index++) {
+          if (this.demandList[index].tenderStatus == "1") {
+            this.demandList[index].tenderStatus = "招募中";
+          } else if (this.demandList[index].tenderStatus == "2") {
+            this.demandList[index].tenderStatus = "已结束";
+          }
+        }
+      });
+    },
+    studioInfo(id) {
+      this.$router.push({
+        path: "/projectMessage",
+        query: {
+          projectName: "M000989",
+          projectId: id
+        }
+      });
+    },
+    handleSizeChange(val) {
+      //改变每页数量
+      this.studioMessage.pageRow = val;
+      this.handleFilter();
+    },
+    handleCurrentChange(val) {
+      //改变页码
+      this.studioMessage.pageNum = val;
+      this.getList();
+    },
+    handleFilter() {
+      //查询事件
+      this.studioMessage.pageNum = 1;
+      this.getList();
+    },
+    getIndex($index) {
+      //表格序号
+      return (
+        (this.studioMessage.pageNum - 1) * this.studioMessage.pageRow +
+        $index +
+        1
+      );
+    },
+  }
 };
 </script>
 
 <style scoped>
-.wrapper {
-  width: 900px;
-  height: 400px;
-  background-color: antiquewhite;
-  margin: 40px auto;
-  border: 1px solid red;
+
+.project-filter-container {
+  background: #fff;
+  box-shadow: 0 1px 2px 0 rgba(31, 45, 61, 0.1);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  border-bottom: 1px solid #eff2f7;
 }
-.p-type {
-  width: 100%;
-  height: 100px;
-  /* background-color: aqua; */
-  /* position: relative; */
+.project-filter-content {
+  padding: 2rem;
+  border-bottom: 1px solid #eff2f7;
+  background-color: #f8f9fa;
 }
-.project-type {
-  padding-top: 30px;
-  padding-left: 20px;
-  /* background-color: red; */
+.filter-item {
+  border-bottom: 1px solid #eff2f7;
 }
-.p-type .pr-type {
-  width: 860px;
-  height: 20px;
-  /* background-color: rosybrown; */
-  /* padding-top: 30px; */
-  margin: 20px auto;
-  padding-bottom: 9px;
-  border-bottom: 1px solid red;
+.expand-option .expand-option-content {
+  padding-top: 0.5rem;
 }
-.pr-type .pro-type {
-  width: 600px;
-  margin-left: 70px;
+.expand-option .expand-option-content .option-content {
+  margin-left: 8rem;
+  position: relative;
 }
-.pro-type span {
-  margin-left: 20px;
-  font-size: 13px;
+.expand-option .expand-option-content .option-content .option-list {
+  padding-right: 6rem;
+}
+.expand-option .expand-option-content .option-content .option {
+  display: inline-block;
+  padding: 0.32rem 1.2rem;
+  color: #273444;
+  font-size: 0.9rem;
+  line-height: 1.35rem;
   cursor: pointer;
+  margin: 0 0.1rem 1rem;
 }
-.project {
-  background-color: royalblue;
+.expand-option .expand-option-content .option-content .option.all {
+  border-radius: 2px;
+  background: #4289dc;
+  color: #fff;
 }
-.serAddress {
-  background-color: royalblue;
+.item-container-2Txk_ {
+  border-bottom: 1px solid #eff2f7;
 }
-.serEmployee {
-  background-color: royalblue;
-}
-.sortc {
-  background-color: royalblue;
-}
-.imgWrapper{
-  width: 900px;
-  height: 762px;
-  margin: 20px auto;
-  /* background-color: aquamarine; */
-  border: 1px solid rgb(214, 182, 140);
-}
-.imgWrapper .tidiCenter{
+.item-container-2Txk_ .item-content--DS7m {
+  padding: 1.5rem 0;
+  display: table;
   width: 100%;
-  height: 254px;
-  /* background-color: red; */
-  border-bottom:1px solid rgb(204, 193, 179);
+  box-sizing: border-box;
 }
-.tidiCenter .tidiImg{
-  float: left;
-  height: 100%;
+.item-container-2Txk_ .item-content--DS7m .icon-content-3GTl0 {
+  width: 10.71rem;
+  overflow: hidden;
+  position: relative;
+  border-radius: 2px;
 }
-.tidiCenter .imgRight{
-  /* background-color: aqua; */
-  height: 100%;
-  margin-left: 20px;
-  width: 600px;
-  float: left;
+a {
+  color: #108ee9;
+  background: transparent;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
-.contentRight .pmName{
-  height: 20px;
-  /* background-color: bisque; */
-  margin-top: 5px;
+.item-container-2Txk_ .item-content--DS7m .body-content-2y6ks {
+  position: relative;
 }
-.contentRight .workPlace{
-  font-size: 12px;
-  margin-top: 6px;
-  /* background-color: blue; */
+.item-container-2Txk_ .item-content--DS7m .body-content-2y6ks .info-body-34ARl {
+  padding-left: 1.5rem;
+  margin-bottom: 1.2rem;
 }
-.workPlace span{
+.item-container-2Txk_
+  .item-content--DS7m
+  .body-content-2y6ks
+  .info-body-34ARl
+  .title-2q5sH {
+  line-height: 1.8rem;
+  margin-bottom: 0.5rem;
+  word-break: break-all;
+}
+.item-container-2Txk_
+  .item-content--DS7m
+  .body-content-2y6ks
+  .info-body-34ARl
+  .name-UUeBS {
+  color: #273444;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.item-container-2Txk_
+  .item-content--DS7m
+  .body-content-2y6ks
+  .info-body-34ARl
+  .no-3TiXA {
+  margin-right: 0.5rem;
+}
+.item-container-2Txk_
+  .item-content--DS7m
+  .body-content-2y6ks
+  .info-body-34ARl
+  .name-UUeBS {
+  color: #273444;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.item-container-2Txk_
+  .item-content--DS7m
+  .body-content-2y6ks
+  .info-body-34ARl
+  .recruiting {
+  border: 1px solid #61c279;
+  color: #61c279;
+}
+.item-container-2Txk_
+  .item-content--DS7m
+  .body-content-2y6ks
+  .info-body-34ARl
+  .price-2qRFd {
+  float: right;
+}
+.item-container-2Txk_
+  .item-content--DS7m
+  .body-content-2y6ks
+  .info-body-34ARl
+  .bargain-1QpRQ {
+  color: #8796a8;
+  font-size: 1rem;
+  margin: 0 0.5rem;
+}
+.money-LMlJK {
+  color: #f75288;
+}
+.item-container-2Txk_
+  .item-content--DS7m
+  .body-content-2y6ks
+  .info-body-34ARl
+  .label-2n6KW {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-right: 2rem;
+  display: inline-block;
+}
+.label-2n6KW span {
+  color: #3c4858;
+}
+.item-container-2Txk_
+  .item-content--DS7m
+  .body-content-2y6ks
+  .info-body-34ARl
+  .time-2b2Sj {
+  color: #8796a8;
+  font-size: 0.9rem;
+  line-height: 1.35rem;
+  position: absolute;
+  bottom: 0;
+}
+.item-container-2Txk_
+  .item-content--DS7m
+  .body-content-2y6ks
+  .info-body-34ARl
+  .time-2b2Sj
+  span:first-child {
+  padding-left: 0;
+}
+.item-container-2Txk_ .item-content--DS7m .icon-content-3GTl0 img.img-1 {
+  width: 60%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.item-container-2Txk_ .item-content--DS7m .body-content-2y6ks,
+.item-container-2Txk_ .item-content--DS7m .icon-content-3GTl0 {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.liMenu {
   margin-right: 20px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.32rem 1.2rem;
+  color: #273444;
+  font-size: 0.9rem;
+  line-height: 1.45rem;
+  cursor: pointer;
+  margin: 0 0.1rem 1rem;
 }
-.evaluate{
-  margin-top: 5px;
+.liMenu.type {
+  color: #fff;
+  background: #4289dc;
 }
-.requireEvaluate{
-  font-size: 13px;
+.liMenu.schedule {
+  color: #fff;
+  background: #4289dc;
 }
-.requireEvaluate p{
-  margin-top: 4px;
+.liMenu.role {
+  color: #fff;
+  background: #4289dc;
 }
-.enrollTime{
-  color: rgb(134, 142, 150);
+.padding-leftandright {
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 3%;
 }
+.gray-bgcolor {
+  background: #f0f2f5;
+}
+.white-bgcolor {
+  background: white;
+}
+.padding-top20 {
+  padding-top: 20px;
+}
+
 </style>
