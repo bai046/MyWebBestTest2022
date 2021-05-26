@@ -33,7 +33,7 @@
                 </div>
                 <!-- <template slot-scope="scope"> -->
                 <el-button
-                  type="primary"
+                  type="button"
                   icon="edit"
                   @click="showUpdateBasicInfo"
                   >修改</el-button
@@ -66,7 +66,7 @@
                     <el-button @click="dialogFormVisible1 = false"
                       >取 消</el-button
                     >
-                    <el-button type="primary" @click="updateUser"
+                    <el-button type="button" @click="updateUser"
                       >修 改</el-button
                     >
                   </div>
@@ -103,7 +103,7 @@
                 <div class="edit-box">
                   <span>{{ user.email }}</span>
                 </div>
-                <el-button type="primary" icon="edit" @click="showUpdateAccount"
+                <el-button type="button" icon="edit" @click="showUpdateAccount"
                   >修改</el-button
                 >
                 <el-dialog
@@ -131,7 +131,7 @@
                     <el-button @click="dialogFormVisible2 = false"
                       >取 消</el-button
                     >
-                    <el-button type="primary" @click="updateUser"
+                    <el-button type="button" @click="updateUser"
                       >修 改</el-button
                     >
                   </div>
@@ -160,7 +160,7 @@
                 <div class="edit-box">
                   <span>***********</span>
                 </div>
-                <el-button type="primary" icon="edit" @click="showUpdatePwd"
+                <el-button type="button" icon="edit" @click="showUpdatePwd"
                   >修改</el-button
                 >
                 <el-dialog
@@ -197,7 +197,7 @@
                     <el-button @click="dialogFormVisible3 = false"
                       >取 消</el-button
                     >
-                    <el-button type="primary" @click="updateUser"
+                    <el-button type="button" @click="updateUser"
                       >修 改</el-button
                     >
                   </div>
@@ -358,7 +358,7 @@ export default {
 .el-form-item {
   margin-bottom: 22px;
 }
-.el-button--primary {
+.el-button--button {
   color: #000;
   background-color: #fff;
   border-color: #fff;
@@ -366,8 +366,8 @@ export default {
   color: #595959;
   float: right;
 }
-.el-button--primary:focus,
-.el-button--primary:hover {
+.el-button--button:focus,
+.el-button--button:hover {
   background: #dae7f5;
   border-color: #fff;
   color: #000;

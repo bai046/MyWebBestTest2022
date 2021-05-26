@@ -22,7 +22,7 @@
                   <span>{{ this.user.balance }}</span>
                 </div>
                 <!-- <template slot-scope="scope"> -->
-                <el-button type="primary" icon="edit" @click="showCash"
+                <el-button type="button" icon="edit" @click="showCash"
                   >提现</el-button
                 >
                 <el-dialog
@@ -68,7 +68,7 @@
                     <el-button @click="dialogFormVisible1 = false"
                       >取 消</el-button
                     >
-                    <el-button type="primary" @click="cashWithdrawal"
+                    <el-button type="button" @click="cashWithdrawal"
                       >提 现</el-button
                     >
                   </div>
@@ -86,7 +86,7 @@
                   <span>{{ this.user.completedTransactions }}</span>
                 </div>
                 <el-button
-                  type="primary"
+                  type="button"
                   icon="edit"
                   @click="showFinishedRecord"
                   >详情</el-button
@@ -131,7 +131,7 @@
                   <span>{{ this.user.outstandingTransactions }}</span>
                 </div>
                 <el-button
-                  type="primary"
+                  type="button"
                   icon="edit"
                   @click="showFinishingRecord"
                   >详情</el-button
@@ -179,7 +179,7 @@
                   <span>{{ test1 }}</span>
                 </div>
                 <!-- <template slot-scope="scope"> -->
-                <el-button type="primary" icon="edit" @click="showSetup"
+                <el-button type="button" icon="edit" @click="showSetup"
                   >设置</el-button
                 >
                 <el-dialog
@@ -216,7 +216,7 @@
                     <el-button @click="dialogFormVisible4 = false"
                       >取 消</el-button
                     >
-                    <el-button type="primary" @click="updateCardInfo"
+                    <el-button type="button" @click="updateCardInfo"
                       >确 认</el-button
                     >
                   </div>
@@ -224,7 +224,7 @@
                 <!-- </template> -->
               </li>
               <li>
-                <el-button type="primary" icon="edit" @click="showAddCard"
+                <el-button type="button" icon="edit" @click="showAddCard"
                   >新增银行卡</el-button
                 >
                 <el-dialog
@@ -253,7 +253,7 @@
                     <el-button @click="dialogFormVisible5 = false"
                       >取 消</el-button
                     >
-                    <el-button type="primary" @click="insertCard"
+                    <el-button type="button" @click="insertCard"
                       >确 认</el-button
                     >
                   </div>
@@ -270,7 +270,6 @@
 <script>
 import About from "./About.vue";
 import SNavBar from "../components/NavBar/studio.vue";
-// import CNavBar from '@/components/NavBar/company';
 
 export default {
   components: { About, SNavBar },
@@ -519,7 +518,7 @@ export default {
 .el-form-item {
   margin-bottom: 22px;
 }
-.el-button--primary {
+.el-button--button {
   color: #000;
   background-color: #fff;
   border-color: #fff;
@@ -527,8 +526,8 @@ export default {
   color: #595959;
   float: right;
 }
-.el-button--primary:focus,
-.el-button--primary:hover {
+.el-button--button:focus,
+.el-button--button:hover {
   background: #dae7f5;
   border-color: #fff;
   color: #000;
