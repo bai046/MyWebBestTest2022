@@ -6,7 +6,7 @@
 
       <div id="function">
 <el-link :underline="false" @click="showLogin" icon="edit"
-          >个人中心</el-link>
+          >登入</el-link>
 
                   <!-- <el-button  type="primary" icon="edit" @click="showLogin"><i class="fa fa-user" aria-hidden="true"></i>登录</el-button> -->
                     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible1" style="display: none;width:60%;margin:10px 300px 10px" >
@@ -25,7 +25,7 @@
 	                    -o-transition:.5s all;-ms-transition:.5s all;transition:.5s all;text-transform: uppercase;-webkit-appearance:none;">
                       登 录</el-button>
                       <el-checkbox v-model="checked" style="right:145px;margin: 1em 15em 1em">记住密码</el-checkbox>
-                      <router-link to="/myWallet" style="margin: -5em 1em -2em">忘记密码</router-link>
+                      <el-button style="margin: -5em 1em -2em">忘记密码</el-button>
                       <el-button style="color:#000" @click="dialogFormVisible1 = false">取 消</el-button>
                     </div>
                   </el-dialog>
@@ -34,7 +34,7 @@
           >注册</el-link>
 
                   <!-- <el-button  type="primary" icon="edit" @click="showRegister"><i class="fa fa-user" aria-hidden="true"></i>注册</el-button> -->
-                    <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible2" style="display: none;width:60%;margin:10px 300px 10px" >
+                    <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible2" style="display: none;width:60%;margin:10px 300px 10px">
                     <el-form class="small-space" label-position="left" label-width="80px"
                             style='width: 300px; margin-left:50px;'>
                       <el-form-item label="账号" required>
@@ -68,15 +68,14 @@
                     </div>
                   </el-dialog>   
 			</div>
-			<div class="clearfix"> </div> 
       </div>	
 </div>
 </template>
 
 
 <script>
-import img_404 from "@/assets/404_images/404.png";
-import img_404_cloud from "@/assets/404_images/404_cloud.png";
+// import img_404 from "@/assets/404_images/404.png";
+// import img_404_cloud from "@/assets/404_images/404_cloud.png";
 
 // import $ from 'jquery';
 
@@ -84,8 +83,8 @@ export default {
   name:'index',
   data() {
     return {
-      img_404,
-      img_404_cloud,
+      // img_404,
+      // img_404_cloud,
       roles: [{
           value: '1',
           label: '企业'

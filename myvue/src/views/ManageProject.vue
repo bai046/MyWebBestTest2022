@@ -78,13 +78,21 @@ export default {
 <style>
 #M{
   background-color: rgb(240, 242, 245);
+  /* height: auto; */
+  padding-bottom: 50px;
+  background: #fff;
+  min-height: 500px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  color: #333;
+  border-radius: 4px;
 }
 .shopping-built {
   border: solid;
   width: 900px;
   height: 900px;
   background-color: rgb(34, 164, 204);
-  margin: 90px auto;
+  margin: 50px auto;
 }
 .item {
   margin: 0 10px;
