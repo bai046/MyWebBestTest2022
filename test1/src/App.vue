@@ -14,7 +14,10 @@
         </div>
         
       </el-main>
-      <el-footer><Footer /></el-footer>
+      <div id="footer">
+<el-footer><Footer /></el-footer>
+      </div>
+      
     </el-container>
   </div>
 </template>
@@ -61,8 +64,11 @@ export default {
   background-color: #244152;
 }
 
+/* #footer{
+  
+} */
 .el-footer {
-  position: fixed;
+    position: fixed;
   display: flex;
   justify-content: center;
   padding: 0;

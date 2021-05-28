@@ -1,5 +1,6 @@
 <template>
   <div id="cnnode">
+
     <div id="ctitle">
       <a href="https://cnodejs.org/"> cnode论坛 </a>
       <div id="inp">
@@ -11,12 +12,8 @@
     <hr />
     <div id="cantainer">
       <!-- 对数据请求的处理，最为重要的一句话 -->
-      <el-table
-        style="width: 100%"
-        :data="
-          topicsArr.slice((currentPage - 1) * pagesize, currentPage * pagesize)
-        "
-      >
+
+      <el-table style="width: 100%" height="500" border :data="topicsArr.slice((currentPage - 1) * pagesize, currentPage * pagesize)">
         <el-table-column label="author" pro="author" width="100">
           <template slot-scope="scope">
             <div style="height:30px wength:30px">
@@ -30,13 +27,14 @@
             <span>{{ scope.row.author.loginname }}</span>
           </template>
         </el-table-column>
+
         <el-table-column label="reply_count" prop="reply_count" width="150">
         </el-table-column>
         <el-table-column label="visit_count" prop="visit_count" width="150">
         </el-table-column>
-        <el-table-column label="title" prop="title" width="500">
+        <el-table-column label="title" prop="title" width="600">
         </el-table-column>
-        <el-table-column label="last_reply_at" prop="last_reply_at" width="400">
+        <el-table-column label="last_reply_at" prop="last_reply_at" width="500">
         </el-table-column>
       </el-table>
       <el-pagination
@@ -102,10 +100,12 @@ export default {
 <style>
 #cnnode {
   /* background-color: lawngreen; */
-    border: solid;
+    /* border: solid; */
   margin-top: 5px;
+  margin-bottom: 50px;
 }
 #ctitle {
+  margin-bottom: 20px;
   font-size: 20px;
   font-weight: bolder;
   /* background-color: blanchedalmond; */
@@ -116,6 +116,7 @@ a {
 #inp{
   display: inline-block;
   width: 200px;
-    
+    margin-left: 100px;
 }
+
 </style>
