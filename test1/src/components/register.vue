@@ -11,6 +11,7 @@
             placeholder="请输入用户名"
             v-model="newUser.newusername"
             clearable
+            @blur="checkUsername"
           ></el-input>
           <el-input
             id="newpassword"
@@ -40,12 +41,18 @@ export default {
   data() {
     return {
       newUser: {
-        newusername: "李四",
-        newpassword: "123456",
+        newusername: "",
+        newpassword: "",
       },
     };
   },
   methods: {
+    checkUsername(){
+Axios.get("/register/check",{params: this.newUser}).then(function(response){
+        console.log(response.data);
+        // alter(response.data+response.data.state+'\n'+response.data.messages);
+      })
+    },
     // cors模块解决跨域问题
     registerSystem() {
       // Axios.get("http://localhost:3000/register", {
@@ -55,7 +62,7 @@ export default {
       //   alert(response.data);
       //   console.log(response.config);
       // })
-      Axios.post("http://localhost:3000/register",{params: this.newUser}).then(function(response){
+      Axios.post("/register",{params: this.newUser}).then(function(response){
         // alter(response.data.state+'\n'+response.data.messages);
       })
     },

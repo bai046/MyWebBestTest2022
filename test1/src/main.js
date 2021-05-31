@@ -1,6 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+import axios from "axios"
+
+axios.defaults.baseURL = "/"
+Vue.prototype.$axios = axios
+
+
 //引入组件
 import ElementUI from 'element-ui';
 //引入样式

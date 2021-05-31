@@ -1,5 +1,6 @@
 let mysql = require('mysql');
 let db = {}
+// db为数据库定为为字面量对象
 
 //插入操作，注意使用异步返回查询结果
 db.insert = function(connection, sql, paras, callback){
@@ -20,6 +21,14 @@ db.query1=function(connection,sql,paras,callback){
         }
     })
 
+}
+
+// 查询操作
+db.query3 = function(connection, sql, paras, callback){
+    connection.query(sql, paras, function (error, results, fields) {
+        if (error) throw error;
+        callback(results);
+    });
 }
 
 //关闭数据库

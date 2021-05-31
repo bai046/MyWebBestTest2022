@@ -2,6 +2,33 @@ var express = require('express');
 var router = express.Router();
 var db=require('../model/db.js');
 
+router.get('/check', function(req, res, next) {
+  let inform=req.query;
+  let username=inform.newusername;
+  console.log(username)
+  let query3SQL="select * from users";
+  let conn=sb.connection();
+  db.query3(conn,query3SQL,"",function(resx){
+    // console.log(resx);
+    let flag=0;
+    for(let i=0;i<resx.lenrth;i++){
+      let existUsername=resx[i].user_name;
+      if(userneme==existUsername){
+  res.send('用户名已存在！');
+  break;
+  // let flag=1;
+      }
+    }
+  })
+  db.close(conn);
+  res.send('this is check');
+});
+
+router.get('/', function(req, res, next) {
+  res.send('this is register');
+});
+
+
 // tongguo
 Date.prototype.format = function(format)
 {
@@ -42,9 +69,9 @@ router.post('/', function(req, res, next) {
     let results=res;
     console.log(results)
   });
-  db.insert(conn,newUserSQL,'',function(insertId){
-    console.log(insertId)
-  });
+  // db.insert(conn,newUserSQL,'',function(insertId){
+  //   console.log(insertId)
+  // });
   db.close(conn);
   res.send("成功");
 });
