@@ -5,7 +5,7 @@
       <About />
       <div class="s-header">
         <div class="h-nav">
-          <router-link to="/One">个人资料</router-link>
+          <router-link to="/personcenter">个人资料</router-link>
           <a href="#myWallet">我的钱包</a>
         </div>
       </div>
@@ -15,251 +15,30 @@
         <div class="setting-item" id="myWallet">
           <div class="options basic">
             <h3 class="title">我的余额</h3>
-            <ul>
-              <li>
-                <p>余额：</p>
-                <div class="edit-box">
-                  <span>{{ this.user.balance }}</span>
-                </div>
-                <!-- <template slot-scope="scope"> -->
-                <el-button type="button" icon="edit" @click="showCash"
-                  >提现</el-button
-                >
-                <el-dialog
-                  :title="textMap[dialogStatus]"
-                  :visible.sync="dialogFormVisible1"
-                  style="display: none"
-                >
-                  <el-form
-                    class="small-space"
-                    label-position="left"
-                    label-width="80px"
-                    style="width: 300px; margin-left: 50px"
-                  >
-                    <el-form-item label="余额">
-                      <p>{{ this.user.balance }}</p>
-                    </el-form-item>
-                    <el-form-item label="支付方式" required>
-                      <el-select v-model="value" placeholder="请选择">
-                        <el-option
-                          v-for="item in options"
-                          :key="item.value"
-                          :label="item.label"
-                          :value="item.value"
-                        >
-                        </el-option>
-                      </el-select>
-                    </el-form-item>
-                    <el-form-item label="默认卡号" required v-if="value == '1'">
-                      <p>123456</p>
-                    </el-form-item>
-                    <el-form-item label="银行卡号" v-if="value == '1'">
-                      <el-input
-                        type="text"
-                        placeholder="新增银行卡，直接填写新卡号"
-                        >123456</el-input
-                      >
-                    </el-form-item>
-                    <el-form-item label="支付密码" required v-if="value == '1'">
-                      <el-input type="password"></el-input>
-                    </el-form-item>
-                  </el-form>
-                  <div slot="footer" class="dialog-footer">
-                    <el-button @click="dialogFormVisible1 = false"
-                      >取 消</el-button
-                    >
-                    <el-button type="button" @click="cashWithdrawal"
-                      >提 现</el-button
-                    >
-                  </div>
-                </el-dialog>
-                <!-- </template> -->
-              </li>
-            </ul>
+            <p>余额：</p>
           </div>
           <div class="options basic">
             <h3 class="title">交易记录</h3>
-            <ul>
-              <li>
-                <p>已完成交易数：</p>
-                <div class="edit-box">
-                  <span>{{ this.user.completedTransactions }}</span>
-                </div>
-                <el-button
-                  type="button"
-                  icon="edit"
-                  @click="showFinishedRecord"
-                  >详情</el-button
-                >
-                <el-dialog
-                  :title="textMap[dialogStatus]"
-                  :visible.sync="dialogFormVisible2"
-                  style="display: none"
-                >
-                  <el-form
-                    class="small-space"
-                    label-position="left"
-                    label-width="80px"
-                    style="width: 600px; margin-left: 50px; margin-bottom: 50px"
-                  >
-                    <el-table
-                      ref="filterTable"
-                      :data="completedTransactionsList"
-                      height="250"
-                      style="width: 1000px; margin-left: 50px"
-                    >
-                      <!-- <el-table-column prop="updateDate" label="日期" column-key="date">                 
-                                    </el-table-column> -->
-                      <!-- <el-table-column prop="beginDate" label="项目开始时间" column-key="date">
-                                    </el-table-column> -->
-                      <el-table-column prop="projectName" label="项目名称">
-                      </el-table-column>
-                      <el-table-column prop="unitName" label="工作室名称">
-                      </el-table-column>
-                      <el-table-column prop="budget" label="项目金额">
-                      </el-table-column>
-                    </el-table>
-                  </el-form>
-                  <router-link to="/modifyInfo" style="float: right"
-                    >详情</router-link
-                  >
-                </el-dialog>
-              </li>
-              <li>
-                <p>未完成交易数：</p>
-                <div class="edit-box">
-                  <span>{{ this.user.outstandingTransactions }}</span>
-                </div>
-                <el-button
-                  type="button"
-                  icon="edit"
-                  @click="showFinishingRecord"
-                  >详情</el-button
-                >
-                <el-dialog
-                  :title="textMap[dialogStatus]"
-                  :visible.sync="dialogFormVisible3"
-                  style="display: none"
-                >
-                  <el-form
-                    class="small-space"
-                    label-position="left"
-                    label-width="80px"
-                    style="width: 600px; margin-left: 50px; margin-bottom: 50px"
-                  >
-                    <el-table
-                      ref="filterTable"
-                      :data="outstandingTransactionsList"
-                      height="250"
-                      style="width: 1000px; margin-left: 50px"
-                    >
-                      <!-- <el-table-column prop="updateDate" label="日期" column-key="date">                 
-                                    </el-table-column> -->
-                      <!-- <el-table-column prop="beginDate" label="项目开始时间" column-key="date">
-                                    </el-table-column> -->
-                      <el-table-column prop="projectName" label="项目名称">
-                      </el-table-column>
-                      <el-table-column prop="unitName" label="工作室名称">
-                      </el-table-column>
-                    </el-table>
-                  </el-form>
-                  <router-link to="/modifyInfo" style="float: right"
-                    >详情</router-link
-                  >
-                </el-dialog>
-              </li>
-            </ul>
-          </div>
-          <div class="options basic">
-            <h3 class="title">银行卡管理</h3>
-            <ul>
-              <li>
-                <p>银行卡</p>
-                <div class="edit-box">
-                  <span>{{ test1 }}</span>
-                </div>
-                <!-- <template slot-scope="scope"> -->
-                <el-button type="button" icon="edit" @click="showSetup"
-                  >设置</el-button
-                >
-                <el-dialog
-                  :title="textMap[dialogStatus]"
-                  :visible.sync="dialogFormVisible4"
-                  style="display: none"
-                >
-                  <el-form
-                    class="small-space"
-                    label-position="left"
-                    label-width="80px"
-                    style="width: 300px; margin-left: 50px"
-                  >
-                    <el-form-item label="银行卡">
-                      <span>{{ test1 }}</span>
-                    </el-form-item>
-                    <el-form-item label="默认卡号">
-                      <el-radio v-model="radio" label="1">是</el-radio>
-                      <el-radio v-model="radio" label="0">否</el-radio>
-                    </el-form-item>
-                    <el-form-item label="是否解绑">
-                      <el-radio v-model="radioRelieve" label="1">是</el-radio>
-                      <el-radio v-model="radioRelieve" label="0">否</el-radio>
-                    </el-form-item>
-                    <el-form-item
-                      label="密码"
-                      required
-                      v-if="radioRelieve == '1'"
-                    >
-                      <el-input type="password"></el-input>
-                    </el-form-item>
-                  </el-form>
-                  <div slot="footer" class="dialog-footer">
-                    <el-button @click="dialogFormVisible4 = false"
-                      >取 消</el-button
-                    >
-                    <el-button type="button" @click="updateCardInfo"
-                      >确 认</el-button
-                    >
-                  </div>
-                </el-dialog>
-                <!-- </template> -->
-              </li>
-              <li>
-                <el-button type="button" icon="edit" @click="showAddCard"
-                  >新增银行卡</el-button
-                >
-                <el-dialog
-                  :title="textMap[dialogStatus]"
-                  :visible.sync="dialogFormVisible5"
-                  style="display: none"
-                >
-                  <el-form
-                    class="small-space"
-                    label-position="left"
-                    label-width="80px"
-                    style="width: 300px; margin-left: 50px"
-                  >
-                    <el-form-item label="银行卡号">
-                      <el-input type="text"></el-input>
-                    </el-form-item>
-                    <el-form-item label="默认卡号">
-                      <el-radio v-model="radio" label="1">是</el-radio>
-                      <el-radio v-model="radio" label="0">否</el-radio>
-                    </el-form-item>
-                    <el-form-item label="密码" required>
-                      <el-input type="password"></el-input>
-                    </el-form-item>
-                  </el-form>
-                  <div slot="footer" class="dialog-footer">
-                    <el-button @click="dialogFormVisible5 = false"
-                      >取 消</el-button
-                    >
-                    <el-button type="button" @click="insertCard"
-                      >确 认</el-button
-                    >
-                  </div>
-                </el-dialog>
-              </li>
-            </ul>
+            <el-form
+              class="small-space"
+              label-position="left"
+              label-width="80px"
+              style="width: 600px; margin-left: 50px; margin-bottom: 50px"
+            >
+              <el-table
+                ref="filterTable"
+                :data="completedTransactionsList"
+                height="250"
+                style="width: 1000px; margin-left: 50px"
+              >
+                <el-table-column prop="projectName" label="项目名称">
+                </el-table-column>
+                <el-table-column prop="unitName" label="工作室名称">
+                </el-table-column>
+                <el-table-column prop="budget" label="项目金额">
+                </el-table-column>
+              </el-table>
+            </el-form>
           </div>
         </div>
       </div>
@@ -273,270 +52,10 @@ import SNavBar from "../components/NavBar/studio.vue";
 
 export default {
   components: { About, SNavBar },
-  data() {
-    return {
-      dialogStatus: "update",
-      dialogFormVisible1: false,
-      dialogFormVisible2: false,
-      dialogFormVisible3: false,
-      dialogFormVisible4: false,
-      dialogFormVisible5: false,
-      radio: "1",
-      radioRelieve: "0",
-      test: {
-        test1: "",
-        test2: "",
-      },
-      textMap: {
-        update: "",
-        showCash: "提现",
-        completedDeal: "已完成交易项目",
-        completingDeal: "未完成交易项目",
-        setup: "设置",
-        addCard: "新增银行卡",
-      },
-      dateMap: [
-        {
-          text: "2018-03-01",
-          value: "2018-03-01",
-        },
-        {
-          text: "2018-03-02",
-          value: "2018-03-02",
-        },
-        {
-          text: "2018-03-03",
-          value: "2018-03-03",
-        },
-        {
-          text: "2018-03-04",
-          value: "2018-03-04",
-        },
-      ],
-      user: {
-        roleId: "",
-        projectName: "",
-        progressLog: "",
-        finalPayment: "",
-        unitName: "",
-        balance: "",
-        completedTransactions: "",
-        outstandingTransactions: "",
-      },
-      completedTransactionsList: [],
-      outstandingTransactionsList: [],
-      options: [
-        {
-          value: "1",
-          label: "银行卡",
-        },
-        {
-          value: "2",
-          label: "支付宝",
-        },
-      ],
-      value: "",
-      tableData: [
-        {
-          date: "2018-03-02",
-          name: "张",
-          address: "浙江",
-          salary: "999",
-        },
-        {
-          date: "2018-03-04",
-          name: "张",
-          address: "大学",
-          salary: "998",
-        },
-        {
-          date: "2018-03-01",
-          name: "张",
-          address: "宁波",
-          salary: "997",
-        },
-        {
-          date: "2018-03-03",
-          name: "张",
-          address: "理工",
-        },
-        {
-          date: "2018-03-04",
-          name: "张",
-          address: "学院",
-        },
-        {
-          date: "2018-03-04",
-          name: "张",
-          address: "数据",
-        },
-        {
-          date: "2018-03-04",
-          name: "张",
-          address: "",
-        },
-        {
-          date: "2018-03-04",
-          name: "张",
-          address: "123456",
-        },
-      ],
-      dialogVisible: false,
-    };
-  },
-  created() {
-    this.user.unitName = this.$root.unitName;
-    this.user.roleId = this.$root.loginedRoleId;
-    this.getBalance();
-    this.getCompletedTransactions();
-    this.getOutstandingTransactions();
-    this.cardNumTransform();
-  },
-  methods: {
-    getOutstandingTransactions() {
-      this.api({
-        url: "/transaction/countOutstandingTransactions",
-        method: "post",
-        data: this.user,
-      }).then((data) => {
-        this.user.outstandingTransactions = data.count;
-        this.outstandingTransactionsList = data.list;
-      });
-    },
-    getCompletedTransactions() {
-      this.api({
-        url: "/transaction/countCompletedTransactions",
-        method: "post",
-        data: this.user,
-      }).then((data) => {
-        this.user.completedTransactions = data.count;
-        this.completedTransactionsList = data.list;
-      });
-    },
-    getBalance() {
-      this.api({
-        url: "/transaction/getBalance",
-        method: "post",
-        data: this.user,
-      }).then((data) => {
-        this.user.balance = data.balance.balance.toFixed(2);
-      });
-    },
-    cardNumTransform() {
-      var num1 = "4561234832185443";
-      var num2 = "1231234832185443";
-      this.test1 =
-        num1.substring(0, 3) + "******" + num1.substring(num1.length - 3);
-      this.test2 =
-        num1.substring(0, 3) + "******" + num1.substring(num1.length - 3);
-    },
-    showCash() {
-      // let user;
-      this.dialogFormVisible1 = true;
-      this.dialogStatus = "showCash";
-    },
-    showFinishedRecord() {
-      // let user;
-      this.dialogFormVisible2 = true;
-      this.dialogStatus = "completedDeal";
-    },
-    showFinishingRecord() {
-      // let user;
-      this.dialogFormVisible3 = true;
-      this.dialogStatus = "completingDeal";
-    },
-    showSetup() {
-      this.dialogFormVisible4 = true;
-      this.dialogStatus = "setup";
-    },
-    showAddCard() {
-      this.dialogFormVisible5 = true;
-      this.dialogStatus = "addCard";
-    },
-    cashWithdrawal() {},
-    updateCardInfo() {},
-    insertCard() {},
-    formatter(row, column) {
-      return row.address;
-    },
-    filterTag(value, row) {
-      return row.tag === value;
-    },
-    filterHandler(value, row, column) {
-      const property = column["property"];
-      return row[property] === value;
-    },
-    handleRemove(file, fileList) {
-      console.log(file, fileList);
-    },
-    handlePictureCardPreview(file) {
-      this.dialogImageUrl = file.url;
-      this.dialogVisible = true;
-    },
-  },
 };
 </script>
 
-<style>
-.el-form small-space,
-.el-form--label-left {
-  width: 800px;
-  margin-left: 50px;
-}
-.el-table,
-.el-table--fit,
-.el-table--enable-row-hover,
-.el-table--enable-row-transition {
-  width: 600px;
-  margin-left: 50px;
-}
-.el-button {
-  display: inline-block;
-  line-height: 1;
-  white-space: nowrap;
-  cursor: pointer;
-  background: #fff;
-  border-color: #fff;
-  color: #606266;
-  -webkit-appearance: none;
-  text-align: center;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  outline: 0;
-  margin: 0;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
-  padding: 12px 20px;
-  font-size: 13px;
-  border-radius: 4px;
-}
-.el-button:hover {
-  background: #dae7f5;
-  border-color: #fff;
-  color: #000;
-}
-.el-form-item {
-  margin-bottom: 22px;
-}
-.el-button--button {
-  color: #000;
-  background-color: #fff;
-  border-color: #fff;
-  font-size: 13px;
-  color: #595959;
-  float: right;
-}
-.el-button--button:focus,
-.el-button--button:hover {
-  background: #dae7f5;
-  border-color: #fff;
-  color: #000;
-  border-radius: 10px;
-  right: 28em;
-}
-.col-md-5 {
-  width: 90%;
-}
+<style scoped>
 .uc-layer-top.self {
   height: 280px;
   margin-top: 65px;
@@ -549,15 +68,51 @@ export default {
   margin-bottom: 40px;
   overflow: hidden;
 }
-.uc-avatar.face-icon {
+.uc-layer-top.self .uc-subtit {
+  width: 320px;
+  margin: 0 auto;
   position: relative;
+  background-color: #f2f2f2;
 }
-.uc-avatar {
-  width: 115px;
-  margin: 45px auto 0;
-  background-color: #fff;
-  position: relative;
+.uc-layer-top.self .uc-subtit span.jifentxt {
+  cursor: pointer;
+  min-width: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
+.uc-layer-top.self .uc-subtit span {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+}
+.uc-layer-top.self .uc-subtit span.viptxt {
+  width: 150px;
+  margin-left: 5px;
+}
+
+
+
+.el-form small-space,
+.el-form--label-left {
+  width: 800px;
+  margin-left: 50px;
+}
+.el-table,
+.el-table--fit,
+.el-table--enable-row-hover,
+.el-table--enable-row-transition {
+  width: 600px;
+  margin-left: 50px;
+}
+
+.el-form-item {
+  margin-bottom: 22px;
+}
+
+.col-md-5 {
+  width: 90%;
+}
+
 .setting-page {
   margin-top: 40px;
   margin-bottom: 60px;
@@ -569,9 +124,6 @@ export default {
   width: 980px;
   margin-left: auto;
   margin-right: auto;
-}
-.qrcode {
-  padding-top: 70px;
 }
 .setting-layer {
   position: fixed;
@@ -597,49 +149,17 @@ export default {
   padding-top: 10px;
   display: none;
 }
-body,
-ul,
-ol,
-li,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-form,
-fieldset,
-table,
-td,
-img,
-div,
-dl,
-dt,
-dd,
-input,
-textarea {
-  margin: 0;
-  padding: 0;
-}
+
 #faceUploader {
   padding-left: 0;
   padding-top: 0;
 }
-.little-pop {
-  padding-left: 26px;
-  padding-top: 10px;
-  display: none;
-}
+
 .unbind-box {
   padding-left: 30px;
   padding-top: 25px;
 }
-.little-pop {
-  padding-left: 26px;
-  padding-top: 10px;
-  display: none;
-}
+
 .tel-validate {
   width: 340px;
   background: #ffffff;
@@ -651,101 +171,38 @@ textarea {
   padding-left: 30px;
   padding-top: 25px;
 }
-.little-pop {
-  padding-left: 26px;
-  padding-top: 10px;
-  display: none;
-}
+
 .tel-validate {
   width: 340px;
   background: #ffffff;
   z-index: 10;
   padding: 30px 30px 0;
   display: none;
-}
-.help-dips {
-  position: relative;
-  position: fixed;
-  bottom: 40px;
-  right: 60px;
-  width: 28px;
-  height: 28px;
-  display: block;
-  z-index: 1;
 }
 .layer-feedBack {
   padding-top: 0px;
   padding-left: 0px;
 }
-.little-pop {
-  padding-left: 26px;
-  padding-top: 10px;
-  display: none;
-}
-.face-icon .marks {
-  position: absolute;
-  left: 50%;
-  bottom: -3px;
-  font-size: 0;
-  width: 60px;
-}
-.uc-layer-top.self .uc-subtit {
-  width: 320px;
-  margin: 0 auto;
-  position: relative;
-  background-color: #f2f2f2;
-}
+
 .uc-subtit {
   font-size: 12px;
   line-height: 2;
   height: 26px;
 }
-.uc-layer-top.self .uc-subtit span.jifentxt {
-  cursor: pointer;
-  min-width: 100px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-.uc-layer-top.self .uc-subtit span {
-  display: inline-block;
-  vertical-align: middle;
-  overflow: hidden;
-}
+
 .uc-subtit {
   font-size: 12px;
   line-height: 2;
   height: 26px;
 }
-.uc-layer-top {
-  height: 260px;
-  background-color: #fff;
-  border-bottom: 1px solid #c8c8c8;
-  text-align: center;
-  margin-bottom: 40px;
-  overflow: hidden;
-}
-.uc-layer-top.self .uc-subtit span.viptxt {
-  width: 150px;
-  margin-left: 5px;
-}
-.uc-layer-top.self .uc-subtit span {
-  display: inline-block;
-  vertical-align: middle;
-  overflow: hidden;
-}
+
+
 .uc-subtit {
   font-size: 12px;
   line-height: 2;
   height: 26px;
 }
-.uc-layer-top {
-  height: 260px;
-  background-color: #fff;
-  border-bottom: 1px solid #c8c8c8;
-  text-align: center;
-  margin-bottom: 40px;
-  overflow: hidden;
-}
+
 .s-header {
   height: 60px;
   margin-top: 15px;
@@ -862,24 +319,16 @@ textarea {
   padding: 20px 0 20px;
   line-height: 1;
 }
-.clearfix {
-  zoom: 1;
-}
+
 .item-change .notice-item .title h2 {
   font-size: 14px;
 }
 .item-change .notice-item .l-box {
   width: 498px;
 }
-.fl {
-  float: left;
-}
 .item-change .notice-item .title h3 {
   font-size: 14px;
   font-weight: normal;
-}
-.fr {
-  float: right;
 }
 .item-change .t-tips {
   line-height: 30px;
@@ -946,9 +395,6 @@ tbody {
   padding: 10px 5px;
   line-height: 1.42857143;
   font-weight: normal;
-}
-.page .clearfix {
-  zoom: 1;
 }
 .skin-vip {
   color: rgb(170, 170, 170);
@@ -1076,18 +522,6 @@ span.bind-wechatuid {
 .uploader-container {
   padding: 10px 30px;
 }
-.clearfix {
-  zoom: 1;
-}
-.frame {
-  width: 300px;
-  height: 300px;
-  border: 5px #d1d1d1 solid;
-  border-radius: 3px;
-  float: left;
-  position: relative;
-  overflow: hidden;
-}
 .faceUploaderPlus {
   display: inline-block;
   width: 300px;
@@ -1096,20 +530,6 @@ span.bind-wechatuid {
   text-align: center;
   font-size: 80px;
   color: #78787a;
-}
-.frame img {
-  display: block;
-  overflow: hidden;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  -ms-transform: translate(0, -50%);
-  -moz-transform: translate(0, -50%);
-  -o-transform: translate(0, -50%);
-  transform: translate(0, -50%);
-}
-img {
-  border: none;
 }
 #preview {
   float: left;
@@ -1150,9 +570,6 @@ img {
 }
 .tel-validate .words {
   line-height: 30px;
-}
-.clearfix {
-  zoom: 1;
 }
 .tel-validate .yzm-box .input {
   position: relative;
@@ -1256,9 +673,6 @@ img {
 .tel-validate .words {
   line-height: 30px;
 }
-.clearfix {
-  zoom: 1;
-}
 .tel-validate .yzm-box .input {
   position: relative;
   height: 56px;
@@ -1280,124 +694,6 @@ img {
   height: 54px;
   line-height: 54px\9;
   font-size: 16px;
-}
-.help-dips a.help-icon-ques,
-.help-dips a.help-icon-ques:active {
-  background-position: -45px -29px;
-  background-image: url(/Public/Common/img/help-icon.png);
-  background-repeat: no-repeat;
-}
-.help-dips a.help-icon-ques {
-  width: 28px;
-  height: 28px;
-  background-position: -45px -29px;
-  display: block;
-  /* position: absolute; */
-  /* right: 0; */
-  /* bottom: 0; */
-  cursor: pointer;
-}
-.help-icon {
-  background-image: url(/Public/Common/img/help-icon.png);
-  background-repeat: no-repeat;
-  display: block;
-}
-.help-dips .help-dips-box {
-  position: absolute;
-  right: -14px;
-  bottom: 45px;
-  width: 130px;
-  background-color: #ffffff;
-  box-shadow: 1px 1.732px 3px 0px rgba(0, 0, 0, 0.3);
-  padding: 5px 0px 5px 0px;
-  display: none;
-  box-sizing: border-box;
-}
-.help-dips .help-dips-box i.help-icon-bdot {
-  display: block;
-  background-position: -21px 0px;
-  width: 33px;
-  height: 15px;
-  position: absolute;
-  z-index: 99;
-  bottom: -15px;
-  right: 11px;
-}
-.help-icon {
-  background-image: url(/Public/Common/img/help-icon.png);
-  background-repeat: no-repeat;
-  display: block;
-}
-.help-dips .help-dips-box a {
-  font-size: 14px;
-  color: #000000;
-  display: block;
-  padding-left: 14px;
-  /* height: 37px; */
-  /* line-height: 37px; */
-  padding-top: 14px;
-  padding-bottom: 14px;
-}
-.feedback-header {
-  padding: 13px 17px 0px 17px;
-}
-.clearfix {
-  zoom: 1;
-}
-.layer-feedBack .feedback-header a.closeFeedback {
-  background-image: url(/Public/Home/img/close.png);
-  background-repeat: no-repeat;
-  display: block;
-  width: 16px;
-  height: 16px;
-  background-position: -7px -7px;
-}
-.fr {
-  float: right;
-}
-.feedMessageBox {
-  padding-left: 34px;
-  padding-right: 34px;
-  padding-top: 20px;
-}
-.feedMessageBox textarea {
-  border: 1px #dcdcdc solid;
-  border-radius: 3px;
-  padding: 13px 19px;
-  width: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
-  height: 118px;
-  margin-top: 16px;
-}
-textarea {
-  resize: none;
-}
-input,
-select,
-textarea {
-  outline: none;
-  border: none;
-  background: none;
-  cursor: text;
-}
-.little-pop .btns {
-  padding-right: 26px;
-  margin-top: 26px;
-  height: 38px;
-  text-align: right;
-  font-size: 0;
-  padding-bottom: 26px;
-}
-.layer-feedBack .btns .yourEmail {
-  display: inline-block;
-  text-align: left;
-  color: #000000;
-  font-size: 14px;
-  /* float: left; */
-  height: 38px;
-  line-height: 38px;
-  padding-left: 34px;
 }
 .little-pop .btns {
   padding-right: 26px;
@@ -1434,45 +730,14 @@ textarea {
   font-size: 16px;
   border-radius: 3px;
 }
-ul,
-ol,
-li,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-form,
-fieldset,
-table,
-td,
-img,
-div,
-dl,
-dt,
-dd,
-input,
-textarea {
-  margin: 0;
-  padding: 0;
-}
+
 .item-change .setting-item .options ul li p {
   float: left;
   min-width: 75px;
   line-height: 32px;
   color: #969696;
 }
-.uc-name {
-  border-top: 1px solid #dcdcdc;
-  padding: 30px 20px 20px 20px;
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: -30px;
-  line-height: 34px;
-  height: 34px;
-}
+
 .s-header .h-nav a.active {
   color: #4d90fe;
 }
@@ -1486,4 +751,7 @@ textarea {
   color: #aaa;
 }
 </style>
+
+
+
 

@@ -107,4 +107,13 @@ export default {
   line-height: 34px;
   height: 34px;
 }
+/* .uc-avatar.face-icon {
+  position: relative;
+}
+.uc-avatar {
+  width: 115px;
+  margin: 45px auto 0;
+  background-color: #fff;
+  position: relative;
+} */
 </style>

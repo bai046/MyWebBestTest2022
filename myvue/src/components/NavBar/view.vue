@@ -1,7 +1,7 @@
 <template>
 <div>
   <div id="header"><!--header-one--> 
-				<p><router-link to="/One" style="color:white" id="title">
+				<p><router-link to="/personcenter" style="color:white" id="title">
         发猿地</router-link></p>
 
       <div id="function">

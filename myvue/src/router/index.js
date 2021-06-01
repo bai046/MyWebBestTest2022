@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import One from '../views/One.vue'
+import personcenter from '../views/personcenter.vue'
 import Two from '../views/Two.vue'
 import Help from '../views/help.vue'
 import View from '../components/NavBar/view.vue'
@@ -26,9 +26,9 @@ const routes = [
     component: View
   },
   {
-    path: "/One",
-    name: 'One',
-    component: One
+    path: "/personcenter",
+    name: 'personcenter',
+    component: personcenter
   },
   {
     path: "/Two",
