@@ -25,7 +25,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="expand-option filter-item">
+                <!-- <div class="expand-option filter-item">
                   <div class="expand-option-content">
                     <div class="project-label">项目角色：</div>
                     <div class="option-content">
@@ -42,7 +42,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
             </el-row>
           </el-form-item>
@@ -211,11 +211,11 @@ export default {
   created: function() {
     this.getAllDemand();
   },
-  computed: {
-    message() {
-      return "页面找不到了......";
-    }
-  },
+  // computed: {
+  //   message() {
+  //     return "页面找不到了......";
+  //   }
+  // },
   methods: {
     selectType(itemType, idxType) {
       this.indexType = idxType;

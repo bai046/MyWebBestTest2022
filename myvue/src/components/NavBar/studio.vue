@@ -3,11 +3,6 @@
     <router-link to="/view"><div id="title">发源地</div></router-link>
     <div id="function">
       <router-link to="/One"
-        ><el-link :underline="false"
-          >试验</el-link
-        ></router-link
-      >
-      <router-link to="/One"
         ><el-link :underline="false" icon="el-icon-user-solid"
           >个人中心</el-link
         ></router-link

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 import One from '../views/One.vue'
 import Two from '../views/Two.vue'
 import Help from '../views/help.vue'
@@ -12,21 +11,6 @@ import StudioManageProgress from '../views/projectManagement/studioManageProgres
 import StudioManageFinished from '../views/projectManagement/studioManageFinished.vue'
 
 
-
-// export default new router({
-//   routes: [
-//     {
-//       path: "/One",
-//       name: 'One',
-//       component: One
-//     },
-//     {
-//       path: "/Two",
-//       name: 'Two',
-//       component: Two
-//     }
-//   ]
-// })
 Vue.use(VueRouter)
 
 const routes = [
