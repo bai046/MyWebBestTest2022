@@ -5,8 +5,6 @@ import axios from "axios"
 
 axios.defaults.baseURL = "/"
 Vue.prototype.$axios = axios
-
-
 //引入组件
 import ElementUI from 'element-ui';
 //引入样式
@@ -78,7 +76,8 @@ const routes = [
 // 3. 创建 router 实例，然后传 `routes` 配置
 // 你还可以传别的配置参数, 不过先这么简单着吧。
 var router = new VueRouter({
-    routes
+    mode: 'history',
+  routes
 })
 export default router;
 

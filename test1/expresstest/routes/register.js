@@ -1,58 +1,67 @@
 var express = require('express');
 var router = express.Router();
-var db=require('../model/db.js');
+var db = require('../model/db.js');
 
-router.get('/check', function(req, res, next) {
-  let inform=req.query;
-  let username=inform.newusername;
-  console.log(username)
-  let query3SQL="select * from users";
-  let conn=sb.connection();
-  db.query3(conn,query3SQL,"",function(resx){
+router.get('/check', function (req, res, next) {
+  let inform = req.query;
+  console.log(inform)
+  let username = inform.newusername;
+  // console.log(username)
+  let query3SQL = "select * from users";
+  let conn = db.connection();
+  db.query3(conn, query3SQL, "", function (resx) {
     // console.log(resx);
-    let flag=0;
-    for(let i=0;i<resx.lenrth;i++){
-      let existUsername=resx[i].user_name;
-      if(userneme==existUsername){
-  res.send('用户名已存在！');
-  break;
-  // let flag=1;
+    let flag = 0;
+    for (let i = 0; i < resx.length; i++) {
+      let existUsername = resx[i].user_name;
+      console.log(existUsername)
+      console.log(1)
+      if (username == existUsername) {
+        flag = 1;
+        break;
       }
+      if (flag == 1) {
+        res.send('用户名已存在！');
+
+      } else {
+        res.send('用户名有效！');
+
+      }
+  //     // let flag=1;
     }
   })
   db.close(conn);
-  res.send('this is check');
+  // res.send('this is check');
 });
 
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   res.send('this is register');
 });
 
 
 // tongguo
-Date.prototype.format = function(format)
-{
- var o = {
- "M+" : this.getMonth()+1, //month
- "d+" : this.getDate(),    //day
- "h+" : this.getHours(),   //hour
- "m+" : this.getMinutes(), //minute
- "s+" : this.getSeconds(), //cond
- "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
- "S" : this.getMilliseconds() //millisecond
- }
- if(/(y+)/.test(format)) format=format.replace(RegExp.$1,
- (this.getFullYear()+"").substr(4 - RegExp.$1.length));
- for(var k in o)if(new RegExp("("+ k +")").test(format))
- format = format.replace(RegExp.$1,
- RegExp.$1.length==1 ? o[k] :
- ("00"+ o[k]).substr((""+ o[k]).length));
- return format;
+Date.prototype.format = function (format) {
+  var o = {
+    "M+": this.getMonth() + 1, //month
+    "d+": this.getDate(),    //day
+    "h+": this.getHours(),   //hour
+    "m+": this.getMinutes(), //minute
+    "s+": this.getSeconds(), //cond
+    "q+": Math.floor((this.getMonth() + 3) / 3),  //quarter
+    "S": this.getMilliseconds() //millisecond
+  }
+  if (/(y+)/.test(format)) format = format.replace(RegExp.$1,
+    (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+  for (var k in o) if (new RegExp("(" + k + ")").test(format))
+    format = format.replace(RegExp.$1,
+      RegExp.$1.length == 1 ? o[k] :
+        ("00" + o[k]).substr(("" + o[k]).length));
+  return format;
 }
 
 
 // 回调函数（请求，响应）
-router.post('/', function(req, res, next) {
+router.post('/', function (req, res, next) {
   let inform = req.body.params;
   let username = inform.newusername;
   let password = inform.newpassword;
@@ -61,12 +70,12 @@ router.post('/', function(req, res, next) {
 
   console.log(inform);
   // SQL用编程格式
-  let newUserSQL = 'INSERT INTO users (user_id,user_name,user_password) VALUES(1002,' +'"'+ username+'"' + ',' +'"'+ password +'"' + ')'
+  let newUserSQL = 'INSERT INTO users (user_id,user_name,user_password) VALUES(1002,' + '"' + username + '"' + ',' + '"' + password + '"' + ')'
   console.log(newUserSQL);
   let conn = db.connection();
 
-  db.insert(conn,newUserSQL,'',function(res){
-    let results=res;
+  db.insert(conn, newUserSQL, '', function (res) {
+    let results = res;
     console.log(results)
   });
   // db.insert(conn,newUserSQL,'',function(insertId){

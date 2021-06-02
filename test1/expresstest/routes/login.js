@@ -6,30 +6,26 @@ var db=require('../model/db.js')
 // router.get('/', function(req, res, next) {
 //   res.send('login was successful!');
 // });
+
 router.post('/', function(req, res, next) {
   let inform = req.body.params;
   let username = inform.username;
   let password = inform.password;
+    // res.send('login');
+    // SQL用编程格式
+  let loginSQL="select user_name,user_passward from users"
 
-  console.log(username)
-
+  console.log(username);
+  console.log(password);
   console.log(inform);
 
-    // SQL用编程格式
-  let newUserSQL = 'INSERT INTO users (user_id,user_name,user_password) VALUES(1002,' +'"'+ username+'"' + ',' +'"'+ password +'"' + ')'
-  console.log(newUserSQL);
-  // const conn = db.connection();
-
-
-  // db.insert(conn,newUserSQL,'',function(res){
-  //   let result=res;
-  //   console.log(res)
-  // });
-  // db.insert(conn,newUserSQL,'',function(insertId){
-  //   console.log(insertId)
-  // });
-  // db.close(conn);
-  // res.send("成功");
+  const conn = db.connection();
+  db.query2(conn,loginSQL,"",function(res){
+    console.log(res);
+  })
+  
+  db.close(conn);
+  res.send("登入成功");
 });
 module.exports = router;
 

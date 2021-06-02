@@ -49,14 +49,11 @@ export default {
   },
   methods:{
     loginSystem(){
-      Axios.post('http://localhost:3000/login',{params:this.user}).then(function(response){
+      // this.$router.push({path:"/work"})
+      Axios.post('/login',{params:this.user}).then(function(response){
         console.log("你已登入！");
-        // alter(response.data.state+'\n'+response.data.messages);
-        // console.log(response.data);
-        // console.log(response.status);
-        // console.log(response.statusText);
-        // console.log(response.headers);
-        // console.log(response.config);
+        alter(response.data.state+'\n'+response.data.messages);
+        console.log(response.data);
       })
     }
   }

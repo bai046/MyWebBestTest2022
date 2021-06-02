@@ -4,6 +4,7 @@
       <el-card class="box-card">
         <div slot="header" class="clearfix">
           <span>用户注册</span>
+          <span id="checkTips" v-text="this.tips" :class="this.state?tip1:tip2">111</span>
         </div>
         <div id="registerContentBody">
           <el-input
@@ -21,10 +22,10 @@
             clearable
           ></el-input>
         </div>
-
+<!-- :class="this.state?this.submit1:this.submit2" -->
         <router-link to="/login">
           <div id="registerSubmit">
-            <el-button id="systemSubmit" type="button" @click="registerSystem"
+            <el-button id="systemSubmit" type="button"  @click="registerSystem" 
               >注册</el-button
             >
           </div>
@@ -44,12 +45,28 @@ export default {
         newusername: "",
         newpassword: "",
       },
+      tips:" ",
+      state:false,
+      tip1:"redTips",
+      tip2:"greenTips",
+      // submit1:"submit1",
+      // submit1:"submit2",
     };
   },
   methods: {
     checkUsername(){
-Axios.get("/register/check",{params: this.newUser}).then(function(response){
-        console.log(response.data);
+Axios.get("http://localhost:3000/register/check",{params: this.newUser}).then(res=>{
+        // this.tips=response.data.messages;
+        // if(response.data.state=true){
+        //   this.state=true;
+        // }
+        // console.log(response.data+response.data.state+'\n'+response.data.messages);
+        // console.log(response)
+        console.log(res)
+        alert(res.data)
+        // alert(this.response.data)
+        // alert("你好啊")
+        // console.log(response.data);
         // alter(response.data+response.data.state+'\n'+response.data.messages);
       })
     },
@@ -91,4 +108,21 @@ Axios.get("/register/check",{params: this.newUser}).then(function(response){
   margin-top: 5px;
   margin-bottom: 8px;
 }
+#checkTips{
+  /* background-color: blue; */
+  margin-left: 45px;
+}
+.redTips{
+  color:red
+}
+.greenTips{
+  color:green
+}
+.submit1{
+  background-color: #fff !important;
+}
+.submit2{
+  background-color: seagreen;
+}
+
 </style>
