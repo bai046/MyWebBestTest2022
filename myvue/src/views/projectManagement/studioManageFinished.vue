@@ -418,9 +418,6 @@ export default {
     padding: 20px 0 20px;
     line-height: 1;
   }
-  .clearfix {
-      zoom: 1;
-  }
   .item-change .notice-item .title h2 {
     font-size: 14px;
   }
@@ -623,9 +620,6 @@ export default {
   .uploader-container {
     padding: 10px 30px;
   }
-  .clearfix {
-    zoom: 1;
-  }
   .frame {
     width: 300px;
     height: 300px;
@@ -733,19 +727,6 @@ export default {
     font-size: 0;
     padding-bottom: 26px;
   }
-  .little-pop .btns .cancel {
-    color: #818181;
-    margin-right: 15px;
-  }
-  .little-pop .btns a {
-    display: inline-block;
-    width: 84px;
-    height: 38px;
-    line-height: 38px;
-    text-align: center;
-    font-size: 16px;
-    border-radius: 3px;
-  }
   .little-pop .btns .sure.active {
     background: #357ae8;
     cursor: pointer;
@@ -769,9 +750,6 @@ export default {
   }
   .tel-validate .words {
     line-height: 30px;
-  }
-  .clearfix {
-    zoom: 1;
   }
   .tel-validate .yzm-box .input {
     position: relative;
@@ -805,9 +783,6 @@ export default {
     height: 28px;
     background-position: -45px -29px;
     display: block;
-    /* position: absolute; */
-    /* right: 0; */
-    /* bottom: 0; */
     cursor: pointer;
   }
   .help-icon {
@@ -918,10 +893,6 @@ export default {
     font-size: 0;
     padding-bottom: 26px;
   }
-  .little-pop .btns .cancel {
-    color: #818181;
-    margin-right: 15px;
-  }
   .little-pop .btns a {
     display: inline-block;
     width: 84px;
@@ -945,10 +916,6 @@ export default {
     font-size: 16px;
     border-radius: 3px;
   }
-  ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, fieldset, table, td, img, div, dl, dt, dd, input, textarea {
-    margin: 0;
-    padding: 0;
-}
 .item-change .setting-item .options ul li p {
     float: left;
     min-width: 75px;

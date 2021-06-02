@@ -282,14 +282,6 @@ export default {
   height: 280px;
   margin-top: 65px;
 }
-
-.uc-avatar {
-  width: 115px;
-  margin: 45px auto 0;
-  background-color: #fff;
-  position: relative;
-}
-
 .uc-subtit {
   font-size: 12px;
   line-height: 2;
