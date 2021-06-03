@@ -14,7 +14,7 @@
         </div>
         
       </el-main>
-      <div id="footer">
+      <div>
 <el-footer><Footer /></el-footer>
       </div>
       

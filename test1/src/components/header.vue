@@ -1,5 +1,5 @@
 <template>
-  <div id="header">
+  <div>
     <router-link to="/lndex"><div id="title">{{message}}</div></router-link>
     <div id="function">
       <router-link to="/login"><el-button icon="el-icon-edit" round>登录</el-button></router-link>
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: "header",
+  name: "headername",
   data() {
     return {
       message: "江西软件大学-学分管理系统",

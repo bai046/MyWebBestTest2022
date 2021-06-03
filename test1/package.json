@@ -19,6 +19,7 @@
     "vue": "^2.6.11",
     "vue-axios": "^3.2.4",
     "vue-loader": "^15.9.6",
+    "vue-particles": "^1.0.9",
     "vue-router": "^3.5.1"
   },
   "devDependencies": {

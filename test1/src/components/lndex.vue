@@ -26,6 +26,7 @@ export default {};
 
 <style>
 #index {
+  /* position: relative; */
   width: 600px;
   /* height: 400px; */
   margin: 0 auto;

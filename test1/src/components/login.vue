@@ -10,7 +10,6 @@
             >注册</el-button
           >
         </router-link>
-
       </div>
       <el-input
         id="username"
@@ -27,7 +26,9 @@
       <!-- <el-input placeholder="请输入密码" v-model="input" show-password></el-input> -->
       <div id="submit">
         <!-- <router-link to="/work"> -->
-          <el-button id="submitSystem" type="button" @click="loginSystem">登录</el-button>
+        <el-button id="submitSystem" type="button" @click="loginSystem"
+          >登录</el-button
+        >
         <!-- </router-link> -->
       </div>
     </el-card>
@@ -44,21 +45,20 @@ export default {
         username: "",
         password: "",
         // input:''
-      }    
+      },
     };
   },
-  methods:{
-    loginSystem(){
+  methods: {
+    loginSystem() {
       // this.$router.push({path:"/work"})
-      Axios.post('/login',{params:this.user}).then(function(response){
+      Axios.post("/login", { params: this.user }).then(function (response) {
         console.log("你已登入！");
-        alter(response.data.state+'\n'+response.data.messages);
+        alter(response.data.state + "\n" + response.data.messages);
         console.log(response.data);
-      })
-    }
-  }
-
-}
+      });
+    },
+  },
+};
 </script>
 
 <style>
