@@ -4,8 +4,10 @@ import router from './router'
 import store from './store'
 
 import axios from 'axios'
-import VueAxios from 'vue-axios'
-Vue.use(VueAxios, axios)
+// import VueAxios from 'vue-axios'
+// Vue.use(VueAxios, axios)
+Vue.prototype.$axios = axios
+vue.prototype.$message = Message
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
