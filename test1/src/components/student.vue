@@ -1,5 +1,6 @@
 <template>
   <div id="student">
+    <el-page-header @back="goBack" content="详情页面"> </el-page-header>
     <h1>这是关于student</h1>
     <p>这是关于内容 这是关于内容 这是关于内容</p>
       <vue-particles
@@ -27,6 +28,11 @@
 <script>
 export default {
   name: "student",
+  methods: {
+    goBack() {
+      console.log("go back");
+    },
+  },
 };
 </script>
 
