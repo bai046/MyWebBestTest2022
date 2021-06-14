@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="things">
     <el-input
       v-model="input"
       placeholder="请输入待办事项"
@@ -43,6 +43,7 @@
         </li>
       </el-tab-pane>
     </el-tabs>
+
   </div>
 </template>
 
@@ -81,9 +82,9 @@ export default {
 </script>
 
 <style>
-/* #main {
+#things {
   width: 600px;
   margin: 0 auto;
   margin-top: 130px;
-} */
+}
 </style>
