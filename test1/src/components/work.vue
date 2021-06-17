@@ -5,12 +5,13 @@
         <div id="title">
             <span>我是工作台</span>
         </div>
+        
     </div>
 </template>
 
 <script>
     export default {
-        name: "work"
+        name: "work",
     }
 </script>
 
