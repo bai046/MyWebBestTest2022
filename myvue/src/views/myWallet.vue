@@ -16,6 +16,9 @@
           <div class="options">
             <h3 class="title">我的余额</h3>
             <p>余额：</p>
+                <div>
+                  <span>{{ this.user.balance }}</span>
+                </div>
           </div>
           <div class="options">
             <h3 class="title">交易记录</h3>
@@ -52,6 +55,28 @@ import SNavBar from "../components/NavBar/studio.vue";
 
 export default {
   components: { About, SNavBar },
+  data(){
+    return {
+      user:{
+        balance,
+      }
+    }
+  },
+    created() {
+    this.user.unitName = this.$root.unitName;
+    this.getBalance();
+  },
+  methods:{
+        getBalance() {
+      this.api({
+        url: " ",
+        method: "post",
+        data: this.user,
+      }).then((data) => {
+        this.user.balance = data.balance.balance.toFixed(2);
+      });
+    }
+  }
 };
 </script>
 
@@ -71,17 +96,17 @@ export default {
   position: relative;
   background-color: #f2f2f2;
 }
-.uc-layer-top .uc-subtit{
+.uc-layer-top .uc-subtit {
   cursor: pointer;
   min-width: 100px;
   padding-left: 10px;
   padding-right: 10px;
 }
-.uc-layer-top .uc-subtit{
+.uc-layer-top .uc-subtit {
   display: inline-block;
   vertical-align: middle;
   overflow: hidden;
-    width: 150px;
+  width: 150px;
   margin-left: 5px;
 }
 .s-header {
@@ -131,7 +156,7 @@ export default {
   padding-bottom: 20px;
   line-height: 1;
 }
-.item-change .setting-item .options ul li .edit-box{
+.item-change .setting-item .options ul li .edit-box {
   display: inline-block;
   line-height: 32px;
   color: #595959;
@@ -141,7 +166,7 @@ export default {
   padding: 20px 0 20px;
 }
 
-.item-change{
+.item-change {
   font-size: 14px;
 }
 .item-change .l-box {

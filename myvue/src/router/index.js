@@ -16,8 +16,8 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'View',
-    component: View
+    name: 'index',
+    component: personcenter
   }
   ,
   {

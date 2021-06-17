@@ -211,7 +211,7 @@
 <script>
 import About from "./About.vue";
 import SNavBar from "../components/NavBar/studio";
-
+import Qs from "qs";
 export default {
   components: { About, SNavBar },
   data() {
@@ -237,7 +237,6 @@ export default {
         address: "",
         description: "",
       },
-      // dialogImageUrl: "",
       dialogVisible: false,
     };
   },
@@ -255,51 +254,59 @@ export default {
     showUpdatePwd() {
       this.dialogFormVisible3 = true;
     },
-    getUserInfo() {
-      //查询用户信息
-      this.api({
-        url: "/user/getInfo",
-        method: "post",
-        data: this.user,
-      })
-        .then((data) => {
-          this.user.accountId = data.userInfo.account_id;
-          this.user.username = data.userInfo.username;
-          this.user.password = data.userInfo.password;
-          this.$root.unitName = data.userInfo.unit_name;
-          this.user.unitName = data.userInfo.unit_name;
-          this.user.address = data.userInfo.address;
-          this.user.email = data.userInfo.email;
-          this.user.telephone = data.userInfo.telephone;
-          this.user.description = data.userInfo.description;
-          this.user.roleId = data.userInfo.role_id;
-        })
-        .catch(() => {
-          this.$message.error("查询失败");
-        });
+    async getUserInfo() {
+      const data=await this.$axios.get('/api/studio/select_one ',{params:{username:this.username}})
+      console.log(data);
     },
+    // getUserInfo() {
+    //   //查询用户信息
+    //   this.api({
+    //     url: "/studio/select_one  ",
+    //     method: "post",
+    //     data: this.user,
+    //   })
+    //     .then((data) => {
+    //       this.user.accountId = data.userInfo.account_id;
+    //       this.user.username = data.userInfo.username;
+    //       this.user.password = data.userInfo.password;
+    //       this.$root.unitName = data.userInfo.unit_name;
+    //       this.user.unitName = data.userInfo.unit_name;
+    //       this.user.address = data.userInfo.address;
+    //       this.user.email = data.userInfo.email;
+    //       this.user.telephone = data.userInfo.telephone;
+    //       this.user.description = data.userInfo.description;
+    //       this.user.roleId = data.userInfo.role_id;
+    //     })
+    //     .catch(() => {
+    //       this.$message.error("查询失败");
+    //     });
+    // },
+
     updateUser() {
       //修改用户信息
-      let _vue = this;
-      if (this.dialogFormVisible3 == true) {
-        if (this.user.oldPassword != this.user.password)
-          this.$message.error("原密码错误");
-        else if (this.user.newPassword != this.user.reNwePassword)
-          this.$message.error("新密码与确认密码不符");
-        else this.user.password = this.user.newPassword;
-      }
-      this.api({
-        url: "/user/updateUserInfo",
-        method: "post",
-        data: this.user,
-      }).then(() => {
-        let msg = "修改成功";
-        if (this.dialogFormVisible1 == true) this.dialogFormVisible1 = false;
-        else if (this.dialogFormVisible2 == true)
-          this.dialogFormVisible2 = false;
-        else this.dialogFormVisible3 == true;
-        this.dialogFormVisible3 = false;
-      });
+
+    // updateUser() {
+    //   //修改用户信息
+    //   let _vue = this;
+    //   if (this.dialogFormVisible3 == true) {
+    //     if (this.user.oldPassword != this.user.password)
+    //       this.$message.error("原密码错误");
+    //     else if (this.user.newPassword != this.user.reNwePassword)
+    //       this.$message.error("新密码与确认密码不符");
+    //     else this.user.password = this.user.newPassword;
+    //   }
+    //   this.api({
+    //     url: "/user/updateUserInfo",
+    //     method: "post",
+    //     data: this.user,
+    //   }).then(() => {
+    //     let msg = "修改成功";
+    //     if (this.dialogFormVisible1 == true) this.dialogFormVisible1 = false;
+    //     else if (this.dialogFormVisible2 == true)
+    //       this.dialogFormVisible2 = false;
+    //     else this.dialogFormVisible3 == true;
+    //     this.dialogFormVisible3 = false;
+    //   });
     },
     handleRemove(file, fileList) {
       console.log(file, fileList);
@@ -312,7 +319,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #one {
   height: 100%;
   padding: 0;

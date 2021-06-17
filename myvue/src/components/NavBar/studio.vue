@@ -12,7 +12,7 @@
           >项目管理</el-link
         ></router-link
       >
-      <router-link to="/StudioInfo"
+      <router-link to="/ManageProject"
         ><el-link :underline="false" icon="el-icon-edit"
           >查看项目列表</el-link
         ></router-link
