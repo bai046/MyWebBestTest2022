@@ -1,0 +1,10 @@
+{
+    "msg":"测试接口数据成功！",
+    "data":[
+      {"name":"abc","sex":"男", "age":"15","home":"北京"},
+      {"name":"123","sex":"男","age":"20","home":"湖南"},
+      {"name":"qwe","sex":"女","age":"25","home":"北京"},
+      {"name":"wer","sex":"男","age":"30","home":"天津"},
+      {"name":"sdf","sex":"女","age":"45","home":"上海"}
+    ]
+  }
