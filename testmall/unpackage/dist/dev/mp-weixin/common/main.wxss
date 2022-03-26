@@ -1,0 +1,171 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*每个页面公共css */
+view,
+scroll-view,
+swiper,
+swiper-item,
+cover-view,
+cover-image,
+icon,
+text,
+rich-text,
+progress,
+checkbox,
+form,
+input,
+label,
+radio,
+slider,
+switch,
+textarea,
+navigator,
+audio,
+camera,
+video {
+	box-sizing: border-box
+}
+image {
+	display: block
+}
+text {
+	line-height: 1
+}
+.bottom-fill {
+	height: constant(safe-area-inset-bottom);
+	height: env(safe-area-inset-bottom)
+}
+.fix-bot {
+	box-sizing: content-box;
+	padding-bottom: constant(safe-area-inset-bottom);
+	padding-bottom: env(safe-area-inset-bottom)
+}
+.round {
+	position: relative;
+	border-radius: 100rpx
+}
+.round:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 200%;
+	height: 200%;
+	-webkit-transform: scale(.5) translate(-50%, -50%);
+	        transform: scale(.5) translate(-50%, -50%);
+	border: 1px solid #878787;
+	border-radius: 100rpx;
+	box-sizing: border-box
+}
+.b-b:after {
+	position: absolute;
+	z-index: 3;
+	left: 0;
+	top: auto;
+	bottom: 0;
+	right: 0;
+	height: 0;
+	content: '';
+	-webkit-transform: scaleY(.5);
+	        transform: scaleY(.5);
+	border-bottom: 1px solid #eee
+}
+.b-t:before {
+	position: absolute;
+	z-index: 3;
+	left: 0;
+	top: 0;
+	right: 0;
+	height: 0;
+	content: '';
+	-webkit-transform: scaleY(.5);
+	        transform: scaleY(.5);
+	border-bottom: 1px solid #eee
+}
+.b-r:after {
+	position: absolute;
+	z-index: 3;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 0;
+	content: '';
+	-webkit-transform: scaleX(.5);
+	        transform: scaleX(.5);
+	border-right: 1px solid #e5e5e5
+}
+.b-l:before {
+	position: absolute;
+	z-index: 3;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 0;
+	content: '';
+	-webkit-transform: scaleX(.5);
+	        transform: scaleX(.5);
+	border-left: 1px solid #e5e5e5
+}
+.b-b,
+.b-t,
+.b-l,
+.b-r {
+	position: relative
+}
+.hover-gray {
+	background: #fafafa !important
+}
+.hover-dark {
+	background: #f0f0f0 !important
+}
+.hover-opacity {
+	opacity: .7
+}
+.clamp {
+	lines: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: block
+}
+.clamp2 {
+	lines: 2;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden
+}
+.row {
+	display: flex;
+	flex-direction: row;
+	align-items: center
+}
+.column {
+	display: flex;
+	flex-direction: column
+}
+.center {
+	display: flex;
+	align-items: center;
+	justify-content: center
+}
+.fill {
+	flex: 1
+}
+.placeholder {
+	color: #999 !important
+}
+

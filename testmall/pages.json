@@ -1,0 +1,79 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/tabBar/home/home",
+			"style": {
+				"navigationBarTitleText": "线上品牌体验商城"//设置页面标题文字 "navigationStyle":"custom" 去页面标题
+			}
+		},{
+			"path": "pages/tabBar/find",
+			"style": {
+				"navigationBarTitleText": "沙发"
+			}
+		},{
+			"path": "pages/tabBar/contact/contact",
+			"style": {
+				"navigationStyle":"custom"
+			}
+		},{
+			"path": "pages/tabBar/case",
+			"style": {
+				"navigationBarTitleText": " "
+			}
+		},{
+			"path": "pages/tabBar/mine",
+			"style": {
+				"navigationStyle":"custom"
+			}
+		}
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "线上品牌体验商城",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},"easycom": {
+	  "autoscan": true,
+	  "custom": {
+	    "^uni-(.*)": "@/components/uni-$1.vue", // 匹配components目录内的vue文件
+	    "^vue-file-(.*)": "packageName/path/to/vue-file-$1.vue" // 匹配node_modules内的vue文件
+	  }
+	},
+	"tabBar": {
+		"color": "#999",
+		"selectedColor": "#FA436A",
+		"borderStyle": "white",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/tabBar/home/home",
+				"iconPath": "static/tabbar/tab-home.png",
+				"selectedIconPath": "static/tabbar/tab-home-current.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/tabBar/find",
+				"iconPath": "static/tabbar/tab-cate.png",
+				"selectedIconPath": "static/tabbar/tab-cate-current.png",
+				"text": "找家具"
+			},
+			{
+				"pagePath": "pages/tabBar/contact/contact",
+				"iconPath": "static/tabbar/shop.png",
+				"selectedIconPath": "static/tabbar/shop1.png",
+				"text": "联系商家"
+			},
+			{
+				"pagePath": "pages/tabBar/case",
+				"iconPath": "static/tabbar/tab-cart.png",
+				"selectedIconPath": "static/tabbar/tab-cart-current.png",
+				"text": "案例"
+			},
+			{
+				"pagePath": "pages/tabBar/mine",
+				"iconPath": "static/tabbar/tab-user.png",
+				"selectedIconPath": "static/tabbar/tab-user-current.png",
+				"text": "我的"
+			}
+		]
+	}
+}

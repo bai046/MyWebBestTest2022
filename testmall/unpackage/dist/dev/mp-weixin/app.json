@@ -1,0 +1,56 @@
+{
+    "pages": [
+        "pages/tabBar/home/home",
+        "pages/tabBar/find",
+        "pages/tabBar/contact/contact",
+        "pages/tabBar/case",
+        "pages/tabBar/mine"
+    ],
+    "subPackages": [],
+    "window": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "线上品牌体验商城",
+        "navigationBarBackgroundColor": "#F8F8F8",
+        "backgroundColor": "#F8F8F8"
+    },
+    "tabBar": {
+        "color": "#999",
+        "selectedColor": "#FA436A",
+        "borderStyle": "white",
+        "backgroundColor": "#ffffff",
+        "list": [
+            {
+                "pagePath": "pages/tabBar/home/home",
+                "iconPath": "static/tabbar/tab-home.png",
+                "selectedIconPath": "static/tabbar/tab-home-current.png",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/tabBar/find",
+                "iconPath": "static/tabbar/tab-cate.png",
+                "selectedIconPath": "static/tabbar/tab-cate-current.png",
+                "text": "找家具"
+            },
+            {
+                "pagePath": "pages/tabBar/contact/contact",
+                "iconPath": "static/tabbar/shop.png",
+                "selectedIconPath": "static/tabbar/shop1.png",
+                "text": "联系商家"
+            },
+            {
+                "pagePath": "pages/tabBar/case",
+                "iconPath": "static/tabbar/tab-cart.png",
+                "selectedIconPath": "static/tabbar/tab-cart-current.png",
+                "text": "案例"
+            },
+            {
+                "pagePath": "pages/tabBar/mine",
+                "iconPath": "static/tabbar/tab-user.png",
+                "selectedIconPath": "static/tabbar/tab-user-current.png",
+                "text": "我的"
+            }
+        ]
+    },
+    "usingComponents": {},
+    "sitemapLocation": "sitemap.json"
+}
